@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap");
+/* Source Sans 3 is loaded via <link rel="stylesheet"> in each page's
+   <head>, not @import — @import is render-blocking and serializes
+   the font fetch behind this stylesheet's own download+parse. */
 
 :root{
   --deep-navy:#0D1430;
@@ -193,8 +195,8 @@ body.menu-open .brand-wordmark-accent{
   align-items:center;
   gap:6px;
   font-size:14.5px;
-  font-weight:700 !important;
-  letter-spacing:0.02em !important;
+  font-weight:700;
+  letter-spacing:0.02em;
   color:#2f3850;
   white-space:nowrap;
   padding:8px 0;
@@ -1646,7 +1648,7 @@ footer a:hover{
 .single-package-grid{
   max-width:760px;
   margin:0 auto;
-  grid-template-columns:1fr!important;
+  grid-template-columns:1fr;
 }
 
 .fire-package-card{
@@ -2016,8 +2018,8 @@ footer a:hover{
   .nav-link{
     color:rgba(255,255,255,.92);
     font-size:15px;
-    font-weight:700 !important;
-    letter-spacing:0.02em !important;
+    font-weight:700;
+    letter-spacing:0.02em;
     padding:13px 0;
     border-bottom:1px solid rgba(255,255,255,.10);
     justify-content:flex-start;
@@ -2300,6 +2302,10 @@ footer a:hover{
 }
 
 @media(max-width:767px){
+  /* !important required: overrides an inline `transform` set by the
+     scroll-driven parallax script in js/includes.js (inline styles
+     always beat CSS specificity). The script already skips mobile,
+     but this guards against resize-without-reload edge cases. */
   .hero-photo img{
     transform:none!important;
     object-position:center center;
@@ -2475,6 +2481,9 @@ footer a:hover{
     scroll-behavior:auto;
   }
 
+  /* !important required: the universal selector has zero specificity,
+     so this is the only way to guarantee the reduced-motion reset
+     beats every component-level animation/transition rule sitewide. */
   *,
   *:before,
   *:after{
@@ -2626,12 +2635,12 @@ footer a:hover{
   margin:0 0 16px;
 }
 
-.sector-integrations{
-  color:var(--deep-navy)!important;
+.sector-integrations.sector-integrations{
+  color:var(--deep-navy);
   font-weight:800;
-  font-size:14px!important;
-  line-height:1.5!important;
-  margin-bottom:22px!important;
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:22px;
 }
 
 .sector-row-media{
@@ -2880,10 +2889,10 @@ footer a:hover{
     min-height:260px;
   }
 
-  .sector-row-copy{
+  .sector-row-copy.sector-row-copy.sector-row-copy{
     max-width:none;
     padding:34px 32px;
-    margin:0!important;
+    margin:0;
   }
 }
 
@@ -2967,20 +2976,20 @@ footer a:hover{
   border:1px solid rgba(255,255,255,.12);
 }
 
-.nav-serve-monitoring strong{
-  color:#fff!important;
+a.nav-serve-monitoring strong{
+  color:#fff;
 }
 
-.nav-serve-monitoring small{
-  color:rgba(255,255,255,.72)!important;
+a.nav-serve-monitoring small{
+  color:rgba(255,255,255,.72);
 }
 
-.nav-serve-monitoring:hover{
-  background:linear-gradient(135deg,#17245A 0%,#0D1430 100%)!important;
+a.nav-serve-monitoring:hover{
+  background:linear-gradient(135deg,#17245A 0%,#0D1430 100%);
 }
 
-.nav-serve-monitoring:hover strong{
-  color:#fff!important;
+a.nav-serve-monitoring:hover strong{
+  color:#fff;
 }
 
 @media(max-width:1100px){
@@ -2988,21 +2997,21 @@ footer a:hover{
     width:100%;
   }
 
-  .nav-serve-monitoring{
+  a.nav-serve-monitoring{
     margin-top:12px;
-    padding:16px!important;
-    background:rgba(255,255,255,.08)!important;
+    padding:16px;
+    background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.14);
   }
 
-  .nav-serve-monitoring strong{
-    color:#fff!important;
-    font-size:17px!important;
+  a.nav-serve-monitoring strong{
+    color:#fff;
+    font-size:17px;
   }
 
-  .nav-serve-monitoring small{
-    color:rgba(255,255,255,.68)!important;
-    font-size:14px!important;
+  a.nav-serve-monitoring small{
+    color:rgba(255,255,255,.68);
+    font-size:14px;
     line-height:1.45;
   }
 }
@@ -3198,7 +3207,7 @@ footer a:hover{
   .office-integration-copy{
     max-width:none;
     padding:34px 32px;
-    margin:0!important;
+    margin:0;
   }
 }
 
@@ -3486,10 +3495,10 @@ footer a:hover{
     min-height:260px;
   }
 
-  .construction-integration-copy{
+  .construction-integration-copy.construction-integration-copy.construction-integration-copy{
     max-width:none;
     padding:34px 32px;
-    margin:0!important;
+    margin:0;
   }
 }
 
@@ -4024,10 +4033,10 @@ footer a:hover{
     min-height:260px;
   }
 
-  .perimeter-integration-copy{
+  .perimeter-integration-copy.perimeter-integration-copy.perimeter-integration-copy{
     max-width:none;
     padding:34px 32px;
-    margin:0!important;
+    margin:0;
   }
 
   .perimeter-pricing-grid{
@@ -4632,9 +4641,9 @@ footer a:hover{
 }
 
 .career-apply-note{
-  margin-top:18px!important;
-  font-size:14px!important;
-  color:var(--muted)!important;
+  margin-top:18px;
+  font-size:14px;
+  color:var(--muted);
 }
 
 @media(max-width:1000px){
@@ -4762,7 +4771,7 @@ footer a:hover{
     top:82px;
     left:0;
     right:0;
-    width:100vw!important;
+    width:100vw;
     padding:0;
     background:#fff;
     border:0;
@@ -4868,16 +4877,25 @@ footer a:hover{
   }
 
   .nav-dropdown-menu-wide a strong,
-  .nav-serve-menu a strong,
-  .nav-serve-monitoring strong{
-    color:var(--deep-navy)!important;
+  .nav-serve-menu a strong{
+    color:var(--deep-navy);
+    font:800 14px "Source Sans 3",Arial,sans-serif;
+  }
+
+  .nav-serve-monitoring.nav-serve-monitoring strong{
+    color:var(--deep-navy);
     font:800 14px "Source Sans 3",Arial,sans-serif;
   }
 
   .nav-dropdown-menu-wide a small,
-  .nav-serve-menu a small,
-  .nav-serve-monitoring small{
-    color:var(--muted)!important;
+  .nav-serve-menu a small{
+    color:var(--muted);
+    font:600 12.5px "Source Sans 3",Arial,sans-serif;
+    line-height:1.42;
+  }
+
+  .nav-serve-monitoring.nav-serve-monitoring small{
+    color:var(--muted);
     font:600 12.5px "Source Sans 3",Arial,sans-serif;
     line-height:1.42;
   }
@@ -4885,7 +4903,7 @@ footer a:hover{
   .nav-dropdown-menu a:hover strong,
   .nav-dropdown-menu-wide a:hover strong,
   .nav-serve-menu a:hover strong{
-    color:var(--red)!important;
+    color:var(--red);
   }
 
   .nav-serve-monitoring{
@@ -4895,8 +4913,8 @@ footer a:hover{
     background:transparent;
   }
 
-  .nav-serve-monitoring:hover{
-    background:transparent!important;
+  .nav-serve-monitoring.nav-serve-monitoring:hover{
+    background:transparent;
   }
 }
 
@@ -4946,7 +4964,7 @@ footer a:hover{
   }
 
   .desktop-nav{
-    display:none!important;
+    display:none;
   }
 
 /* =========================================================
@@ -4956,7 +4974,7 @@ footer a:hover{
 
 @media (min-width:901px){
   .mobile-menu{
-    display:none!important;
+    display:none;
   }
 }
 
@@ -4967,7 +4985,7 @@ footer a:hover{
 
   .desktop-nav,
   .nav-actions{
-    display:none!important;
+    display:none;
   }
 
   .nav-toggle{
@@ -5925,6 +5943,13 @@ footer a:hover{
 
 @media (max-width:900px){
 
+  /* !important required through this block: a shared .card/.mega-card
+     component style (white background, shadow, radius) leaks into the
+     mobile drawer via .mobile-menu-group/.mobile-accordion, which
+     previously made submenu text unreadable (white-on-white). These
+     rules were a targeted fix for that regression. Left as !important
+     rather than reworked blind, since this touches live mobile nav and
+     any change here needs visual QA before merging. */
   /* Force the mobile drawer to stay dark */
   .mobile-menu,
   .mobile-menu-scroll,
@@ -6406,11 +6431,6 @@ h6{
 .brand-wordmark{
   font-weight:700;
   letter-spacing:-.015em;
-}
-
-.nav-link{
-  font-weight:600;
-  letter-spacing:0;
 }
 
 .section-label,
