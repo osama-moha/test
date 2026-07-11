@@ -1,0 +1,207 @@
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Urban Eye Security</h4>
+        <p>
+          Integrated security for Nairobi homes, estates, offices, retail shops, warehouses, Airbnb properties, and institutions, supported by site surveys, clear response procedures, and monitoring options.[cite: 5]
+        </p>
+        <p>
+          <strong>Office:</strong> St. Ellis, Wabera Street, Nairobi CBD<br>
+          <strong>Phone:</strong> +254 768 055 555<br>
+          <strong>Email:</strong> info@urbaneyesecurity.co.ke[cite: 5]
+        </p>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/manned-guarding/">Manned Guarding</a></li>
+          <li><a href="/ajax-smart-alarms/">Smart Alarm Systems</a></li>
+          <li><a href="/cctv-installation/">CCTV Installation</a></li>
+          <li><a href="/access-control/">Access Control</a></li>
+          <li><a href="/electric-fencing/">Electric Fencing & Perimeter Security</a></li>
+          <li><a href="/commercial-fire-alarm-systems/">Fire Alarm Systems</a></li>
+          <li><a href="/professional-monitoring/">PRO Monitoring</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Who We Serve</h4>
+        <ul>
+          <li><a href="/residential-security/">Residential Security</a></li>
+          <li><a href="/airbnb-security/">Airbnb & Short-Stay</a></li>
+          <li><a href="/retail-storefronts/">Retail Storefronts</a></li>
+          <li><a href="/warehouse-security/">Warehouses & Logistics</a></li>
+          <li><a href="/construction-site-security/">Construction Sites</a></li>
+          <li><a href="/office-security/">Offices & Commercial Spaces</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Quick Action</h4>
+        <ul>
+          <li><a onclick="return openServiceDrawer('footer','General Security Assessment','Request a Site Assessment','Share a few details and Urban Eye will advise on the right next step for your property.')" href="/contact/?service=risk-review">Request a site assessment</a></li>
+          <li><a href="/careers/">Careers</a></li>
+          <li><a href="/insights/">Security Insights</a></li>
+          <li><a href="/security-packages/">Compare packages</a></li>
+          <li><a href="/professional-monitoring/">Monitoring & Response</a></li>
+          <li><a href="https://wa.me/254768055555">Chat on WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Urban Eye Security. All rights reserved.</span>
+      <span><a href="/privacy-policy/">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms/">Terms of Service</a></span>
+      <span>Smart. Connected. Protected.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Conversational Engine Styles Overrides -->
+<style>
+  .drawer-backdrop {
+    z-index: 2000 !important;
+  }
+  #drawer {
+    z-index: 2001 !important;
+  }
+  #drawer .form-step {
+    display: none !important;
+  }
+  #drawer .form-step.active {
+    display: block !important;
+  }
+  #drawer .back-step-btn {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #5B6472;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 12px;
+    padding: 0;
+  }
+  #drawer .back-step-btn:hover {
+    color: #C4272E;
+  }
+  #drawer .option-button {
+    display: block;
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #D9DEE8;
+    border-radius: 6px;
+    color: #0D1430;
+    font-family: "Source Sans 3", Arial, sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  #drawer .option-button:hover,
+  #drawer .option-button.selected {
+    border-color: #C4272E;
+    background: #FFF7F8;
+    color: #C4272E;
+  }
+</style>
+
+<div class="drawer-backdrop" id="drawerBackdrop" onclick="closeFormDrawer()" aria-hidden="true"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-describedby="drawerIntro">
+  
+  <div class="drawer-progress-container" style="width:100%; height:6px; background:#EEF2F7; position:relative;">
+    <div id="drawerProgressBar" style="width:20%; height:100%; background:#C4272E; transition:width 0.25s ease;"></div>
+  </div>
+
+  <div class="drawer-header" style="padding: 20px 24px 14px;">
+    <h3 id="drawerTitle">Request a Security Recommendation</h3>
+    <button class="drawer-close" onclick="closeFormDrawer()" aria-label="Close" type="button" style="top:14px;">&times;</button>
+  </div>
+
+  <div class="drawer-body" style="padding: 0 24px 24px;">
+    <p class="drawer-intro" id="drawerIntro" style="font-size:14px; margin:0 0 20px; color:#5B6472;">Share a few details and Urban Eye will advise on the right next step.</p>
+
+    <form id="conversational-drawer-form" action="https://formspree.io/f/xkoegypv" method="POST" onsubmit="return handleDrawerSubmit(event)">
+      <input type="hidden" name="_subject" value="New Conversational Protection Assessment Request">
+      <input type="hidden" name="page_source" id="drawerPageSource" value="">
+      <input type="hidden" name="service_interest" id="drawerServiceInterest" value="">
+
+      <!-- Screen 1: The Situation -->
+      <div class="form-step active" data-step="1">
+        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What type of property are we securing?</h4>
+        <div style="display:grid; gap:2px;">
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Private Residence', 1)">Private Residence</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Retail Shop', 1)">Retail Shop</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Office / Corporate', 1)">Office / Corporate</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Warehouse & Logistics', 1)">Warehouse & Logistics</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Airbnb / Short-Stay', 1)">Airbnb / Short-Stay</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Construction Site', 1)">Construction Site</button>
+        </div>
+        <input type="hidden" name="property_type" id="drawer-input-property_type" required>
+      </div>
+
+      <!-- Screen 2: The Core Problem -->
+      <div class="form-step" data-step="2">
+        <button type="button" class="back-step-btn" onclick="prevDrawerStep(2)">&larr; Back to previous step</button>
+        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What is your primary security concern right now?</h4>
+        <div style="display:grid; gap:2px;">
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'Stopping night break-ins', 2)">Stopping night break-ins</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'Monitoring staff, visitors, or stock', 2)">Monitoring staff, visitors, or stock</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'Upgrading an old, blind alarm system', 2)">Upgrading an old, blind alarm system</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'I just want a professional baseline review', 2)">I just want a professional baseline review</button>
+        </div>
+        <input type="hidden" name="security_concern" id="drawer-input-security_concern" required>
+      </div>
+
+      <!-- Screen 3: The Implication -->
+      <div class="form-step" data-step="3">
+        <button type="button" class="back-step-btn" onclick="prevDrawerStep(3)">&larr; Back to previous step</button>
+        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">If someone accessed the property without permission tonight, how quickly would you know?</h4>
+        <div style="display:grid; gap:2px;">
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'detection_speed', 'Instantly (Verified alert on my phone)', 3)">Instantly (Verified alert on my phone)</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'detection_speed', 'Eventually (Whenever the guard calls me)', 3)">Eventually (Whenever the guard calls me)</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'detection_speed', 'Too late (Probably not until the next morning)', 3)">Too late (Probably not until the next morning)</button>
+        </div>
+        <input type="hidden" name="detection_speed" id="drawer-input-detection_speed" required>
+      </div>
+
+      <!-- Screen 4: The Need-Payoff -->
+      <div class="form-step" data-step="4">
+        <button type="button" class="back-step-btn" onclick="prevDrawerStep(4)">&larr; Back to previous step</button>
+        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">If we identified your exact weak points, what outcome matters most to you?</h4>
+        <div style="display:grid; gap:2px;">
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'desired_outcome', 'Peace of mind for my family or staff', 4)">Peace of mind for my family or staff</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'desired_outcome', 'Reducing business disruption and loss', 4)">Reducing business disruption and loss</button>
+          <button type="button" class="option-button" onclick="handleStepSelection(this, 'desired_outcome', 'Knowing which controls to fix before buying equipment', 4)">Knowing which controls to fix before buying equipment</button>
+        </div>
+        <input type="hidden" name="desired_outcome" id="drawer-input-desired_outcome" required>
+      </div>
+
+      <!-- Screen 5: The Lead Capture -->
+      <div class="form-step" data-step="5">
+        <button type="button" class="back-step-btn" onclick="prevDrawerStep(5)">&larr; Back to previous step</button>
+        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 6px;">Let's organize your physical assessment.</h4>
+        <p style="font-size:13.5px; color:#5B6472; margin:0 0 18px; line-height:1.45;">Enter your details below. An Urban Eye specialist will contact you via WhatsApp to review your answers and schedule your on-site survey.</p>
+        
+        <div style="display:grid; gap:14px; margin-bottom:20px;">
+          <div>
+            <label for="drawer-name" style="font-size:13px; font-weight:700; color:#0D1430; display:block; margin-bottom:6px;">First Name</label>
+            <input id="drawer-name" name="name" placeholder="Your name" style="width:100%; min-height:46px; padding:10px 14px; border:1px solid #D9DEE8; border-radius:4px;" required>
+          </div>
+          <div>
+            <label for="drawer-phone" style="font-size:13px; font-weight:700; color:#0D1430; display:block; margin-bottom:6px;">WhatsApp Number</label>
+            <input id="drawer-phone" name="phone" inputmode="tel" placeholder="e.g. 0768055555" style="width:100%; min-height:46px; padding:10px 14px; border:1px solid #D9DEE8; border-radius:4px;" required>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit" style="min-height:48px; width:100%; justify-content:center;">Book My On-Site Review via WhatsApp</button>
+      </div>
+    </form>
+  </div>
+</aside>
