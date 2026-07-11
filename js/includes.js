@@ -261,8 +261,8 @@ function setActiveNav(){
     activeSection = "services";
   }else if(servePages.includes(path)){
     activeSection = "serve";
-  }else if(path === "/security-packages/"){
-    activeSection = "packages";
+  }else if(path === "/programs/"){
+    activeSection = "programs";
   }else if(path === "/about/"){
     activeSection = "about";
   }else if(path === "/careers/"){
