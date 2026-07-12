@@ -560,6 +560,16 @@ body.menu-open .brand-wordmark-accent{
   margin-bottom:28px;
 }
 
+.hero-subline{
+  max-width:660px;
+  color:#fff;
+  font-size:19px;
+  line-height:1.4;
+  font-weight:700;
+  letter-spacing:0.01em;
+  margin:-14px 0 20px;
+}
+
 .hero-badges{
   display:flex;
   flex-wrap:wrap;
