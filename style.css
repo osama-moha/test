@@ -1274,6 +1274,55 @@ h2{
   line-height:1.65;
 }
 
+/* Homepage "How It Works" timeline - same visual language as
+   .process-list/.process-item above, different class names because
+   it uses a <span><div> child structure instead of <span><h3><p>. */
+.process-timeline{
+  border-left:1px solid var(--border);
+  padding-left:34px;
+}
+
+.process-timeline-item{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:20px;
+  padding:0 0 30px;
+  position:relative;
+}
+
+.process-timeline-item:last-child{
+  padding-bottom:0;
+}
+
+.process-timeline-item span{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(196,39,46,.35);
+  border-radius:50%;
+  color:var(--red);
+  background:#fff;
+  font-size:13px;
+  font-weight:800;
+  line-height:1;
+}
+
+.process-timeline-item h3{
+  margin:0 0 6px;
+  color:var(--deep-navy);
+  font-size:18px;
+  line-height:1.25;
+  font-weight:800;
+}
+
+.process-timeline-item p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+}
+
 /* ===============================
    Forms
 ================================ */
@@ -6176,6 +6225,26 @@ a.nav-serve-monitoring:hover strong{
   }
 
   .process-item p{
+    font-size:15px;
+  }
+
+  .process-timeline{
+    border-left:0;
+    padding-left:0;
+    margin-top:28px;
+  }
+
+  .process-timeline-item{
+    grid-template-columns:42px 1fr;
+    gap:16px;
+    padding-bottom:26px;
+  }
+
+  .process-timeline-item h3{
+    font-size:17px;
+  }
+
+  .process-timeline-item p{
     font-size:15px;
   }
 }
