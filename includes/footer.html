@@ -136,12 +136,12 @@
       <div class="form-step active" data-step="1">
         <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What are we securing?</h4>
         <div style="display:grid; gap:2px;">
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Private Residence', 1)">Private Residence</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Retail Shop', 1)">Retail Shop</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Office / Corporate', 1)">Office / Corporate</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Warehouse & Logistics', 1)">Warehouse & Logistics</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Airbnb / Short-Stay', 1)">Airbnb / Short-Stay</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'property_type', 'Construction Site', 1)">Construction Site</button>
+          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'property_type', 'Private Residence', 1)">Private Residence</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Retail Shop', 1)">Retail Shop</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Office / Corporate', 1)">Office / Corporate</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Warehouse & Logistics', 1)">Warehouse & Logistics</button>
+          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'property_type', 'Airbnb / Short-Stay', 1)">Airbnb / Short-Stay</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Construction Site', 1)">Construction Site</button>
         </div>
         <input type="hidden" name="property_type" id="drawer-input-property_type" required>
       </div>
@@ -151,10 +151,12 @@
         <button type="button" class="back-step-btn" onclick="prevDrawerStep(2)">&larr; Back to previous step</button>
         <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What's your main concern?</h4>
         <div style="display:grid; gap:2px;">
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'Stopping night break-ins', 2)">Stopping night break-ins</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'Monitoring staff, visitors, or stock', 2)">Monitoring staff, visitors, or stock</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'Upgrading an old, blind alarm system', 2)">Upgrading an old, blind alarm system</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'security_concern', 'I just want a professional baseline review', 2)">I just want a professional baseline review</button>
+          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'security_concern', 'Stopping night break-ins', 2)">Stopping night break-ins</button>
+          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'security_concern', 'Keeping the property secure while we\'re away', 2)">Keeping the property secure while we're away</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'security_concern', 'Monitoring staff, visitors, or stock', 2)">Monitoring staff, visitors, or stock</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'security_concern', 'Stopping break-ins or theft', 2)">Stopping break-ins or theft</button>
+          <button type="button" class="option-button" data-track="both" onclick="handleStepSelection(this, 'security_concern', 'Upgrading an old, blind alarm system', 2)">Upgrading an old, blind alarm system</button>
+          <button type="button" class="option-button" data-track="both" onclick="handleStepSelection(this, 'security_concern', 'I just want a professional baseline review', 2)">I just want a professional baseline review</button>
         </div>
         <input type="hidden" name="security_concern" id="drawer-input-security_concern" required>
       </div>
@@ -176,9 +178,11 @@
         <button type="button" class="back-step-btn" onclick="prevDrawerStep(4)">&larr; Back to previous step</button>
         <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What outcome matters most?</h4>
         <div style="display:grid; gap:2px;">
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'desired_outcome', 'Peace of mind for my family or staff', 4)">Peace of mind for my family or staff</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'desired_outcome', 'Reducing business disruption and loss', 4)">Reducing business disruption and loss</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'desired_outcome', 'Knowing which controls to fix before buying equipment', 4)">Knowing which controls to fix before buying equipment</button>
+          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'desired_outcome', 'Peace of mind for my family', 4)">Peace of mind for my family</button>
+          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'desired_outcome', 'Reliable alerts, not false alarms', 4)">Reliable alerts, not false alarms</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'desired_outcome', 'Reducing business disruption and loss', 4)">Reducing business disruption and loss</button>
+          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'desired_outcome', 'Protecting staff and premises', 4)">Protecting staff and premises</button>
+          <button type="button" class="option-button" data-track="both" onclick="handleStepSelection(this, 'desired_outcome', 'Knowing which controls to fix before buying equipment', 4)">Knowing which controls to fix before buying equipment</button>
         </div>
         <input type="hidden" name="desired_outcome" id="drawer-input-desired_outcome" required>
       </div>

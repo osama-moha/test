@@ -100,6 +100,13 @@ function closeFormDrawer(){
   return false;
 }
 
+function applyLeadTrackFilter(formSelector, track) {
+  document.querySelectorAll(formSelector + ' .option-button[data-track]').forEach((btn) => {
+    const btnTrack = btn.dataset.track;
+    btn.style.display = (btnTrack === track || btnTrack === 'both') ? '' : 'none';
+  });
+}
+
 function handleStepSelection(element, fieldId, value, currentStep) {
   const parent = element.parentElement;
   parent.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
@@ -107,6 +114,10 @@ function handleStepSelection(element, fieldId, value, currentStep) {
   
   const targetedInput = document.getElementById('drawer-input-' + fieldId);
   if (targetedInput) targetedInput.value = value;
+
+  if (fieldId === 'property_type' && element.dataset.track) {
+    applyLeadTrackFilter('#conversational-drawer-form', element.dataset.track);
+  }
 
   setTimeout(() => {
     const activeStepEl = document.querySelector(`#conversational-drawer-form .form-step[data-step="${currentStep}"]`);
