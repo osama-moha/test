@@ -401,7 +401,8 @@ body.menu-open .brand-wordmark-accent{
   border-top:1px solid rgba(217,222,232,.75);
 }
 
-.mobile-menu-group > span{
+.mobile-menu-group > span,
+.mobile-menu-group > a.group-header-link{
   display:block;
   padding:0 14px 4px;
   color:var(--red);
@@ -2212,7 +2213,8 @@ footer a:hover{
     border-top:1px solid rgba(255,255,255,.10);
   }
 
-  .mobile-menu-group > span{
+  .mobile-menu-group > span,
+  .mobile-menu-group > a.group-header-link{
     padding:8px 0 3px;
     color:rgba(255,255,255,.48);
     font-size:11px;
@@ -3023,7 +3025,8 @@ section{
   border-bottom:0;
 }
 
-.nav-serve-menu .mobile-menu-group > span{
+.nav-serve-menu .mobile-menu-group > span,
+.nav-serve-menu .mobile-menu-group > a.group-header-link{
   display:block;
   color:var(--red);
   font:900 11px "Source Sans 3",Arial,sans-serif;
@@ -4938,7 +4941,9 @@ a.nav-serve-monitoring:hover strong{
   }
 
   .nav-dropdown-menu .mobile-menu-group > span,
-  .nav-serve-menu .mobile-menu-group > span{
+  .nav-serve-menu .mobile-menu-group > span,
+  .nav-dropdown-menu .mobile-menu-group > a.group-header-link,
+  .nav-serve-menu .mobile-menu-group > a.group-header-link{
     display:block;
     margin:0 0 12px;
     padding:0;
