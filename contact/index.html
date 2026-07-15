@@ -208,7 +208,7 @@
           <input type="hidden" name="page_source" value="contact_page">
 
           <!-- Step 1: The Situation -->
-          <div class="form-step active">
+          <div class="form-step active" data-step="1">
             <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What are we securing?</h4>
             <div style="display:grid; gap:2px;">
               <button type="button" class="option-button" data-track="private" onclick="handleContactStepSelection(this, 'property_type', 'Private Residence', 1)">Private Residence</button>
@@ -222,7 +222,7 @@
           </div>
 
           <!-- Step 2: The Core Problem -->
-          <div class="form-step">
+          <div class="form-step" data-step="2">
             <button type="button" class="back-step-btn" onclick="handleContactPrevStep(2)">&larr; Back to previous step</button>
             <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What's your main concern?</h4>
             <div style="display:grid; gap:2px;">
@@ -237,7 +237,7 @@
           </div>
 
           <!-- Step 3: The Implication -->
-          <div class="form-step">
+          <div class="form-step" data-step="3">
             <button type="button" class="back-step-btn" onclick="handleContactPrevStep(3)">&larr; Back to previous step</button>
             <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">If someone broke in tonight, how fast would you know?</h4>
             <div style="display:grid; gap:2px;">
@@ -249,7 +249,7 @@
           </div>
 
           <!-- Step 4: The Need-Payoff -->
-          <div class="form-step">
+          <div class="form-step" data-step="4">
             <button type="button" class="back-step-btn" onclick="handleContactPrevStep(4)">&larr; Back to previous step</button>
             <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What outcome matters most?</h4>
             <div style="display:grid; gap:2px;">
@@ -263,7 +263,7 @@
           </div>
 
           <!-- Step 5: The Lead Capture -->
-          <div class="form-step">
+          <div class="form-step" data-step="5">
             <button type="button" class="back-step-btn" onclick="handleContactPrevStep(5)">&larr; Back to previous step</button>
             <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 6px;">Let's design your custom protection plan.</h4>
             <p style="font-size:13.5px; color:#5B6472; margin:0 0 18px; line-height:1.45;">Enter your details below and an Urban Eye design specialist will formulate your configurations matrix via WhatsApp routing.</p>
@@ -352,87 +352,8 @@
 <div id="site-footer"></div>
 
 <script>
-let currentContactPageStep = 1;
-
-function handleContactStepSelection(element, fieldId, value, stepNum) {
-  const parent = element.parentElement;
-  parent.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
-  element.classList.add('selected');
-  
-  const targetedInput = document.getElementById('contact-input-' + fieldId);
-  if (targetedInput) targetedInput.value = value;
-
-  if (fieldId === 'property_type' && element.dataset.track) {
-    applyLeadTrackFilter('#contact-step-form', element.dataset.track);
-  }
-
-  setTimeout(() => {
-    goToContactStep(stepNum + 1);
-  }, 220);
-}
-
-function handleContactPrevStep(stepNum) {
-  goToContactStep(stepNum - 1);
-}
-
-function goToContactStep(stepNum) {
-  if (stepNum < 1 || stepNum > 5) return;
-  
-  const steps = document.querySelectorAll('#contact-step-form .form-step');
-  steps.forEach((step, idx) => {
-    if ((idx + 1) === stepNum) {
-      step.classList.add('active');
-    } else {
-      step.classList.remove('active');
-    }
-  });
-
-  const progressBar = document.getElementById('contactProgressBar');
-  if (progressBar) {
-    progressBar.style.width = (stepNum / 5 * 100) + '%';
-  }
-  
-  currentContactPageStep = stepNum;
-}
-
-function handleContactPageSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  
-  const name = document.getElementById('contact-page-name').value;
-  const phone = document.getElementById('contact-page-phone').value;
-  const propType = document.getElementById('contact-input-property_type').value;
-  const concern = document.getElementById('contact-input-security_concern').value;
-  const speed = document.getElementById('contact-input-detection_speed').value;
-  const outcome = document.getElementById('contact-input-desired_outcome').value;
-
-  const whatsappMessage = `Hello Urban Eye, I would like to request a Security Review.\n\n` +
-                          `*Name:* ${name}\n` +
-                          `*WhatsApp:* ${phone}\n` +
-                          `*Property Type:* ${propType}\n` +
-                          `*Primary Concern:* ${concern}\n` +
-                          `*Current Awareness:* ${speed}\n` +
-                          `*Desired Outcome:* ${outcome}`;
-
-  const encodedMessage = encodeURIComponent(whatsappMessage);
-  const whatsappUrl = `https://wa.me/254768055555?text=${encodedMessage}`;
-
-  fetch(form.action, {
-    method: form.method,
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  }).catch(err => console.error(err));
-
-  setTimeout(() => {
-    window.location.href = whatsappUrl;
-  }, 100);
-
-  return false;
-}
-
-// Guarantee synchronization tracking setup on context initialization load
 document.addEventListener("DOMContentLoaded", () => {
-  goToContactStep(1);
+  goToFormStep(1, CONTACT_FORM_CONFIG);
 });
 </script>
 <script src="/js/includes.js" defer></script>

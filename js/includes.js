@@ -107,71 +107,78 @@ function applyLeadTrackFilter(formSelector, track) {
   });
 }
 
-function handleStepSelection(element, fieldId, value, currentStep) {
+// Shared conversational-form logic used by both the site-wide drawer
+// and the standalone /contact/ page. Each surface keeps its own
+// presentation (slide-out panel vs full page), but the step
+// navigation, track filtering, and submission behavior are now
+// defined once here instead of duplicated in each place.
+const DRAWER_FORM_CONFIG = {
+  formSelector: '#conversational-drawer-form',
+  inputPrefix: 'drawer-input-',
+  nameFieldId: 'drawer-name',
+  phoneFieldId: 'drawer-phone',
+  progressBarId: 'drawerProgressBar',
+  totalSteps: 5
+};
+
+const CONTACT_FORM_CONFIG = {
+  formSelector: '#contact-step-form',
+  inputPrefix: 'contact-input-',
+  nameFieldId: 'contact-page-name',
+  phoneFieldId: 'contact-page-phone',
+  progressBarId: 'contactProgressBar',
+  totalSteps: 5
+};
+
+function goToFormStep(stepNum, config) {
+  if (stepNum < 1 || stepNum > config.totalSteps) return;
+
+  document.querySelectorAll(config.formSelector + ' .form-step').forEach((step) => {
+    const stepAttr = parseInt(step.dataset.step, 10);
+    step.classList.toggle('active', stepAttr === stepNum);
+  });
+
+  const progressBar = document.getElementById(config.progressBarId);
+  if (progressBar) {
+    progressBar.style.width = (stepNum / config.totalSteps * 100) + '%';
+  }
+}
+
+function handleUnifiedStepSelection(element, fieldId, value, currentStep, config) {
   const parent = element.parentElement;
   parent.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
   element.classList.add('selected');
-  
-  const targetedInput = document.getElementById('drawer-input-' + fieldId);
+
+  const targetedInput = document.getElementById(config.inputPrefix + fieldId);
   if (targetedInput) targetedInput.value = value;
 
   if (fieldId === 'property_type' && element.dataset.track) {
-    applyLeadTrackFilter('#conversational-drawer-form', element.dataset.track);
+    applyLeadTrackFilter(config.formSelector, element.dataset.track);
   }
 
   setTimeout(() => {
-    const activeStepEl = document.querySelector(`#conversational-drawer-form .form-step[data-step="${currentStep}"]`);
-    const nextStepEl = document.querySelector(`#conversational-drawer-form .form-step[data-step="${currentStep + 1}"]`);
-    
-    if (activeStepEl && nextStepEl) {
-      activeStepEl.classList.remove('active');
-      nextStepEl.classList.add('active');
-      
-      const progressBar = document.getElementById('drawerProgressBar');
-      if (progressBar) {
-        const totalSteps = 5;
-        const targetPercent = ((currentStep + 1) / totalSteps) * 100;
-        progressBar.style.width = targetPercent + '%';
-      }
-    }
+    goToFormStep(currentStep + 1, config);
   }, 220);
 }
 
-function prevDrawerStep(currentStep) {
-  const activeStepEl = document.querySelector(`#conversational-drawer-form .form-step[data-step="${currentStep}"]`);
-  const prevStepEl = document.querySelector(`#conversational-drawer-form .form-step[data-step="${currentStep - 1}"]`);
-  
-  if (activeStepEl && prevStepEl) {
-    activeStepEl.classList.remove('active');
-    prevStepEl.classList.add('active');
-    
-    const progressBar = document.getElementById('drawerProgressBar');
-    if (progressBar) {
-      const totalSteps = 5;
-      const targetPercent = ((currentStep - 1) / totalSteps) * 100;
-      progressBar.style.width = targetPercent + '%';
-    }
-  }
-}
-
-async function handleDrawerSubmit(event) {
+async function handleUnifiedSubmit(event, config) {
   event.preventDefault();
   const form = event.target;
   const submitBtn = form.querySelector('button[type="submit"]');
-  
+
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.textContent = "Processing Setup Brief...";
   }
-  
-  const name = document.getElementById('drawer-name').value;
-  const phone = document.getElementById('drawer-phone').value;
-  const propType = document.getElementById('drawer-input-property_type').value;
-  const concern = document.getElementById('drawer-input-security_concern').value;
-  const speed = document.getElementById('drawer-input-detection_speed').value;
-  const outcome = document.getElementById('drawer-input-desired_outcome').value;
 
-  const whatsappMessage = `Hello Urban Eye, I would like to organize my physical security assessment.\n\n` +
+  const name = document.getElementById(config.nameFieldId).value;
+  const phone = document.getElementById(config.phoneFieldId).value;
+  const propType = document.getElementById(config.inputPrefix + 'property_type').value;
+  const concern = document.getElementById(config.inputPrefix + 'security_concern').value;
+  const speed = document.getElementById(config.inputPrefix + 'detection_speed').value;
+  const outcome = document.getElementById(config.inputPrefix + 'desired_outcome').value;
+
+  const whatsappMessage = `Hello Urban Eye, I would like to request a security assessment.\n\n` +
                           `*Name:* ${name}\n` +
                           `*WhatsApp:* ${phone}\n` +
                           `*Property Type:* ${propType}\n` +
@@ -196,6 +203,30 @@ async function handleDrawerSubmit(event) {
   return false;
 }
 
+function handleStepSelection(element, fieldId, value, currentStep) {
+  handleUnifiedStepSelection(element, fieldId, value, currentStep, DRAWER_FORM_CONFIG);
+}
+
+function prevDrawerStep(currentStep) {
+  goToFormStep(currentStep - 1, DRAWER_FORM_CONFIG);
+}
+
+function handleDrawerSubmit(event) {
+  return handleUnifiedSubmit(event, DRAWER_FORM_CONFIG);
+}
+
+function handleContactStepSelection(element, fieldId, value, currentStep) {
+  handleUnifiedStepSelection(element, fieldId, value, currentStep, CONTACT_FORM_CONFIG);
+}
+
+function handleContactPrevStep(currentStep) {
+  goToFormStep(currentStep - 1, CONTACT_FORM_CONFIG);
+}
+
+function handleContactPageSubmit(event) {
+  return handleUnifiedSubmit(event, CONTACT_FORM_CONFIG);
+}
+
 function initLeadDrawer(){
   const drawer = document.getElementById("drawer");
   if(!drawer) return;
@@ -210,6 +241,11 @@ window.closeFormDrawer = closeFormDrawer;
 window.handleStepSelection = handleStepSelection;
 window.prevDrawerStep = prevDrawerStep;
 window.handleDrawerSubmit = handleDrawerSubmit;
+window.handleContactStepSelection = handleContactStepSelection;
+window.handleContactPrevStep = handleContactPrevStep;
+window.handleContactPageSubmit = handleContactPageSubmit;
+window.goToFormStep = goToFormStep;
+window.applyLeadTrackFilter = applyLeadTrackFilter;
 
 function initNavbar(){
   const navMenu = document.getElementById("nav-menu");
