@@ -6549,7 +6549,7 @@ body{
 
 h1,
 h2{
-  font-weight:700;
+  font-weight:600;
   letter-spacing:-.025em;
 }
 
@@ -6557,13 +6557,13 @@ h3,
 h4,
 h5,
 h6{
-  font-weight:600;
+  font-weight:500;
   letter-spacing:-.025em;
 }
 
 .hero h1,
 .page-hero h1{
-  font-weight:700;
+  font-weight:600;
   letter-spacing:-.035em;
   font-size: clamp(32px, 4vw, 48px);
   line-height: 1.15;
