@@ -2,6 +2,35 @@
    <head>, not @import — @import is render-blocking and serializes
    the font fetch behind this stylesheet's own download+parse. */
 
+/* Inter Tight - self-hosted, headings + hero-copy only. Not used on
+   nav links, buttons, or section labels/eyebrows - those stay on
+   Source Sans 3 (small UI text reads better on a workhorse face;
+   a tighter display face like this is meant for large heading sizes
+   where its character actually shows). */
+@font-face{
+  font-family:"Inter Tight";
+  src:url("/fonts/inter-tight-v9-latin-500.woff2") format("woff2");
+  font-weight:500;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:"Inter Tight";
+  src:url("/fonts/inter-tight-v9-latin-600.woff2") format("woff2");
+  font-weight:600;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:"Inter Tight";
+  src:url("/fonts/inter-tight-v9-latin-700.woff2") format("woff2");
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+}
+
 :root{
   --deep-navy:#0D1430;
   --navy:#1B2C6E;
@@ -45,6 +74,11 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6{
+  font-family:"Inter Tight","Source Sans 3",Arial,sans-serif;
+}
+
 .brand-name,
 .nav-link,
 .btn,
@@ -6500,12 +6534,6 @@ body{
   font-weight:400;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 .brand-name,
 .brand-wordmark,
 .nav-link,
@@ -6520,7 +6548,11 @@ h6,
 }
 
 h1,
-h2,
+h2{
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+
 h3,
 h4,
 h5,
@@ -6531,7 +6563,7 @@ h6{
 
 .hero h1,
 .page-hero h1{
-  font-weight:600;
+  font-weight:700;
   letter-spacing:-.035em;
   font-size: clamp(32px, 4vw, 48px);
   line-height: 1.15;
@@ -6540,7 +6572,8 @@ h6{
 .hero-copy,
 .page-hero p,
 .section-intro{
-  font-weight:400;
+  font-family:"Inter Tight","Source Sans 3",Arial,sans-serif;
+  font-weight:500;
 }
 
 .brand-wordmark{
