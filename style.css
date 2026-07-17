@@ -5730,6 +5730,17 @@ a.nav-serve-monitoring:hover strong{
   color:#fff;
 }
 
+/* .sector-row-copy is a light background, unlike .property-card-overlay
+   (dark) that .framework-link's base styling above assumes. */
+.sector-row-copy .framework-link{
+  color:var(--red);
+  font-weight:800;
+}
+
+.sector-row-copy .framework-link:hover{
+  color:var(--red-dark);
+}
+
 @media(max-width:900px){
   .property-card-row{
     grid-template-columns:repeat(2,1fr);
