@@ -9,6 +9,9 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    var uecConsent=null;try{uecConsent=localStorage.getItem('uec_cookie_consent');}catch(e){}
+    var uecGranted=uecConsent==='granted'?'granted':'denied';
+    gtag('consent','default',{'ad_storage':uecGranted,'ad_user_data':uecGranted,'ad_personalization':uecGranted,'analytics_storage':uecGranted});
     gtag('js', new Date());
 
     gtag('config', 'AW-17823714787');
@@ -33,7 +36,7 @@
 <link rel="preload" href="/fonts/inter-tight-v9-latin-700.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/fonts/inter-tight-v9-latin-600.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/fonts/inter-tight-v9-latin-500.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="stylesheet" href="/style.css?v=20260717b"/>
+<link rel="stylesheet" href="/style.css?v=20260725a"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SecurityService","name":"Urban Eye Security","url":"https://urbaneyesecurity.co.ke/","logo":"https://urbaneyesecurity.co.ke/urban-eye-assets/Icon-only%20version.png","telephone":"+254 768 055 555","email":"info@urbaneyesecurity.co.ke","address":{"@type":"PostalAddress","streetAddress":"St. Ellis, Wabera Street, Nairobi CBD","addressLocality":"Nairobi","addressCountry":"KE"},"areaServed":["Nairobi","Kenya"],"slogan":"Smart Protection. Human Response."}
 </script>
@@ -76,14 +79,14 @@
       <h2>Requests and assessments</h2>
       <p>
         Submitting a form on this site (including through the site assessment drawer or contact page)
-        is a request for Urban Eye to contact you — it is not a purchase, contract, or booking. Final
+        is a request for Urban Eye to contact you. It is not a purchase, contract, or booking. Final
         pricing, scope, and installation timelines are confirmed only after a site assessment or written
         proposal.
       </p>
 
       <h2>Packages and pricing</h2>
       <p>
-        Prices shown for security packages are starting frameworks based on typical property
+        Prices shown for security packages are indicative starting prices based on typical property
         configurations. Actual pricing may vary after a site assessment based on property size, access
         points, existing infrastructure, and specific requirements identified during review.
       </p>
@@ -102,6 +105,11 @@
         incidents. Liability for any service delivered is governed by the specific written service
         agreement for that engagement, not by this website.
       </p>
+      <p>
+        This website and its content are provided on an "as is" basis. While we work to keep the
+        information on this site accurate and the site available, we make no warranty that the content
+        is free of errors or that access will be uninterrupted.
+      </p>
 
       <h2>Intellectual property</h2>
       <p>
@@ -117,7 +125,8 @@
 
       <h2>Governing law</h2>
       <p>
-        These terms are governed by the laws of the Republic of Kenya.
+        These terms are governed by the laws of the Republic of Kenya, and any dispute arising from
+        the use of this website is subject to the jurisdiction of the courts of Kenya.
       </p>
 
       <h2>Contact us</h2>
