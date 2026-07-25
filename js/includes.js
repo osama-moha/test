@@ -38,6 +38,46 @@ async function loadFooter(){
   }
 }
 
+// Cookie consent notice. Google tags load with consent defaulted to
+// "denied" on every page (see the gtag snippet in each page head).
+// This banner records the visitor's choice and updates Consent Mode.
+function initCookieNotice(){
+  let stored = null;
+  try{ stored = localStorage.getItem("uec_cookie_consent"); }catch(e){}
+  if(stored === "granted" || stored === "denied") return;
+
+  const notice = document.createElement("div");
+  notice.className = "cookie-notice";
+  notice.setAttribute("role", "region");
+  notice.setAttribute("aria-label", "Cookie consent");
+  notice.innerHTML =
+    '<p class="cookie-notice-text">We use cookies for analytics and advertising measurement. ' +
+    'See our <a href="/privacy-policy/">Privacy Policy</a> for details.</p>' +
+    '<div class="cookie-notice-actions">' +
+      '<button type="button" class="btn btn-primary cookie-notice-accept">Accept</button>' +
+      '<button type="button" class="btn cookie-notice-decline">Decline</button>' +
+    '</div>';
+
+  function resolveConsent(choice){
+    try{ localStorage.setItem("uec_cookie_consent", choice); }catch(e){}
+    if(typeof gtag === "function"){
+      const state = choice === "granted" ? "granted" : "denied";
+      gtag("consent", "update", {
+        ad_storage: state,
+        ad_user_data: state,
+        ad_personalization: state,
+        analytics_storage: state
+      });
+    }
+    notice.remove();
+  }
+
+  notice.querySelector(".cookie-notice-accept").addEventListener("click", ()=> resolveConsent("granted"));
+  notice.querySelector(".cookie-notice-decline").addEventListener("click", ()=> resolveConsent("denied"));
+
+  document.body.appendChild(notice);
+}
+
 let drawerLastFocus = null;
 
 function openServiceDrawer(pageSource, serviceInterest, title, intro){
@@ -453,4 +493,5 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   initHeroParallax();
   initPageProgress();
   preselectInterestFromUrl();
+  initCookieNotice();
 });

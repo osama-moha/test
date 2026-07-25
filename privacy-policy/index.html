@@ -9,6 +9,9 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    var uecConsent=null;try{uecConsent=localStorage.getItem('uec_cookie_consent');}catch(e){}
+    var uecGranted=uecConsent==='granted'?'granted':'denied';
+    gtag('consent','default',{'ad_storage':uecGranted,'ad_user_data':uecGranted,'ad_personalization':uecGranted,'analytics_storage':uecGranted});
     gtag('js', new Date());
 
     gtag('config', 'AW-17823714787');
@@ -33,7 +36,7 @@
 <link rel="preload" href="/fonts/inter-tight-v9-latin-700.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/fonts/inter-tight-v9-latin-600.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/fonts/inter-tight-v9-latin-500.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="stylesheet" href="/style.css?v=20260717b"/>
+<link rel="stylesheet" href="/style.css?v=20260725a"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SecurityService","name":"Urban Eye Security","url":"https://urbaneyesecurity.co.ke/","logo":"https://urbaneyesecurity.co.ke/urban-eye-assets/Icon-only%20version.png","telephone":"+254 768 055 555","email":"info@urbaneyesecurity.co.ke","address":{"@type":"PostalAddress","streetAddress":"St. Ellis, Wabera Street, Nairobi CBD","addressLocality":"Nairobi","addressCountry":"KE"},"areaServed":["Nairobi","Kenya"],"slogan":"Smart Protection. Human Response."}
 </script>
@@ -80,6 +83,11 @@
         technologies to collect usage data such as pages visited and device or browser type. Google's
         handling of this data is described in the
         <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.
+      </p>
+      <p>
+        When you first visit this site, a cookie notice lets you accept or decline these cookies.
+        Analytics and advertising cookies are withheld until you accept. You can change your choice at
+        any time by clearing this site's data in your browser, which will show the notice again.
       </p>
 
       <h2>How we use your information</h2>
