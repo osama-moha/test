@@ -118,7 +118,7 @@ const DRAWER_FORM_CONFIG = {
   nameFieldId: 'drawer-name',
   phoneFieldId: 'drawer-phone',
   progressBarId: 'drawerProgressBar',
-  totalSteps: 5
+  totalSteps: 3
 };
 
 const CONTACT_FORM_CONFIG = {
@@ -127,7 +127,7 @@ const CONTACT_FORM_CONFIG = {
   nameFieldId: 'contact-page-name',
   phoneFieldId: 'contact-page-phone',
   progressBarId: 'contactProgressBar',
-  totalSteps: 5
+  totalSteps: 3
 };
 
 function goToFormStep(stepNum, config) {
@@ -168,23 +168,26 @@ async function handleUnifiedSubmit(event, config) {
 
   if (submitBtn) {
     submitBtn.disabled = true;
-    submitBtn.textContent = "Processing Setup Brief...";
+    submitBtn.textContent = "Sending your request...";
   }
 
   const name = document.getElementById(config.nameFieldId).value;
   const phone = document.getElementById(config.phoneFieldId).value;
   const propType = document.getElementById(config.inputPrefix + 'property_type').value;
   const concern = document.getElementById(config.inputPrefix + 'security_concern').value;
-  const speed = document.getElementById(config.inputPrefix + 'detection_speed').value;
-  const outcome = document.getElementById(config.inputPrefix + 'desired_outcome').value;
 
-  const whatsappMessage = `Hello Urban Eye, I would like to request a security assessment.\n\n` +
-                          `*Name:* ${name}\n` +
-                          `*WhatsApp:* ${phone}\n` +
-                          `*Property Type:* ${propType}\n` +
-                          `*Primary Concern:* ${concern}\n` +
-                          `*Current Awareness:* ${speed}\n` +
-                          `*Desired Outcome:* ${outcome}`;
+  let whatsappMessage = `Hello Urban Eye, I would like to request a security assessment.\n\n` +
+                        `*Name:* ${name}\n` +
+                        `*WhatsApp:* ${phone}\n` +
+                        `*Property Type:* ${propType}\n` +
+                        `*Primary Concern:* ${concern}`;
+
+  // Optional fields kept for backwards compatibility with any form
+  // variant that still collects them.
+  const speedEl = document.getElementById(config.inputPrefix + 'detection_speed');
+  if (speedEl && speedEl.value) whatsappMessage += `\n*Current Awareness:* ${speedEl.value}`;
+  const outcomeEl = document.getElementById(config.inputPrefix + 'desired_outcome');
+  if (outcomeEl && outcomeEl.value) whatsappMessage += `\n*Desired Outcome:* ${outcomeEl.value}`;
 
   const encodedMessage = encodeURIComponent(whatsappMessage);
   const whatsappUrl = `https://wa.me/254768055555?text=${encodedMessage}`;

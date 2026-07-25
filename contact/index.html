@@ -163,12 +163,12 @@
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="eyebrow">Contact Urban Eye Security</p>
-        <h1>Let's design your protection options.</h1>
+        <h1>Tell us what you need protected.</h1>
         <p>
-          Tell us about your layout footprints and Urban Eye will recommend a customized combination recommendation framework mapping guarding personnel, CCTV architectures, and live monitoring.
+          Share your property type and main concern. Urban Eye will review your requirements and respond with a clear recommendation covering guarding, CCTV, alarms, access control, and monitoring.
         </p>
         <div class="hero-actions">
-          <a href="#contact-form-container" class="btn btn-primary">Get My Custom Review Options</a>
+          <a href="#contact-form-container" class="btn btn-primary">Start My Security Review</a>
           <a href="https://wa.me/254768055555" class="btn btn-outline-white">Chat on WhatsApp</a>
         </div>
       </div>
@@ -178,16 +178,16 @@
   <section class="light-section" id="contact-form-container">
     <div class="container two-col contact-intake-grid">
       <div class="section-copy">
-        <p class="eyebrow">Low Friction Intake</p>
+        <p class="eyebrow">Security Review Request</p>
         <h2>Tell us what you want to protect.</h2>
         <p class="section-intro">
-          This customized diagnostic configuration runs through your core operational properties step-by-step to flag security weak links before recommending hardware options.
+          Answer two short questions and share your contact details. Urban Eye will review your submission and respond on WhatsApp with the recommended next step.
         </p>
 
         <div class="card contact-info-card">
-          <h3>Prefer Instant WhatsApp?</h3>
+          <h3>Prefer WhatsApp?</h3>
           <p>
-            For fast manual configurations, reach out directly via messaging and pass along your property type, general layout size, and location coordinates.
+            Message us directly with your property type, location, and main concern. A consultant will respond during business hours.
           </p>
           <a href="https://wa.me/254768055555" class="text-link">Chat on WhatsApp &rarr;</a>
         </div>
@@ -196,14 +196,14 @@
           <h3>Direct Contact</h3>
           <p><strong>Phone:</strong> +254 768 055 555</p>
           <p><strong>Email:</strong> info@urbaneyesecurity.co.ke</p>
-          <p><strong>Service Area:</strong> Nairobi-focused structural design deployment with site configurations throughout Kenya.</p>
+          <p><strong>Service Area:</strong> Monitoring across Kenya. Site deployments and response coordination centered on Nairobi.</p>
         </div>
       </div>
 
       <!-- Conversational Form Framework Block -->
       <div class="form-card">
         <div class="contact-progress-container" style="width:100%; height:6px; background:#EEF2F7; position:relative; margin-bottom:20px; border-radius:3px; overflow:hidden;">
-          <div id="contactProgressBar" style="width:20%; height:100%; background:#C4272E; transition:width 0.25s ease;"></div>
+          <div id="contactProgressBar" style="width:33.3%; height:100%; background:#C4272E; transition:width 0.25s ease;"></div>
         </div>
 
         <form id="contact-step-form" action="https://formspree.io/f/xkoegypv" method="POST" onsubmit="return handleContactPageSubmit(event)">
@@ -239,37 +239,11 @@
             <input type="hidden" name="security_concern" id="contact-input-security_concern" required>
           </div>
 
-          <!-- Step 3: The Implication -->
+          <!-- Step 3: The Lead Capture -->
           <div class="form-step" data-step="3">
             <button type="button" class="back-step-btn" onclick="handleContactPrevStep(3)">&larr; Back to previous step</button>
-            <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">If someone broke in tonight, how fast would you know?</h4>
-            <div style="display:grid; gap:2px;">
-              <button type="button" class="option-button" onclick="handleContactStepSelection(this, 'detection_speed', 'Instantly (Verified alert on my phone)', 3)">Instantly (Verified alert on my phone)</button>
-              <button type="button" class="option-button" onclick="handleContactStepSelection(this, 'detection_speed', 'Eventually (Whenever the guard calls me)', 3)">Eventually (Whenever the guard calls me)</button>
-              <button type="button" class="option-button" onclick="handleContactStepSelection(this, 'detection_speed', 'Too late (Probably not until the next morning)', 3)">Too late (Probably not until the next morning)</button>
-            </div>
-            <input type="hidden" name="detection_speed" id="contact-input-detection_speed" required>
-          </div>
-
-          <!-- Step 4: The Need-Payoff -->
-          <div class="form-step" data-step="4">
-            <button type="button" class="back-step-btn" onclick="handleContactPrevStep(4)">&larr; Back to previous step</button>
-            <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What outcome matters most?</h4>
-            <div style="display:grid; gap:2px;">
-              <button type="button" class="option-button" data-track="private" onclick="handleContactStepSelection(this, 'desired_outcome', 'Peace of mind for my family', 4)">Peace of mind for my family</button>
-              <button type="button" class="option-button" data-track="private" onclick="handleContactStepSelection(this, 'desired_outcome', 'Reliable alerts, not false alarms', 4)">Reliable alerts, not false alarms</button>
-              <button type="button" class="option-button" data-track="enterprise" onclick="handleContactStepSelection(this, 'desired_outcome', 'Reducing business disruption and loss', 4)">Reducing business disruption and loss</button>
-              <button type="button" class="option-button" data-track="enterprise" onclick="handleContactStepSelection(this, 'desired_outcome', 'Protecting staff and premises', 4)">Protecting staff and premises</button>
-              <button type="button" class="option-button" data-track="both" onclick="handleContactStepSelection(this, 'desired_outcome', 'Knowing which controls to fix before buying equipment', 4)">Knowing which controls to fix before buying equipment</button>
-            </div>
-            <input type="hidden" name="desired_outcome" id="contact-input-desired_outcome" required>
-          </div>
-
-          <!-- Step 5: The Lead Capture -->
-          <div class="form-step" data-step="5">
-            <button type="button" class="back-step-btn" onclick="handleContactPrevStep(5)">&larr; Back to previous step</button>
-            <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 6px;">Let's design your custom protection plan.</h4>
-            <p style="font-size:13.5px; color:#5B6472; margin:0 0 18px; line-height:1.45;">Enter your details below and an Urban Eye design specialist will formulate your configurations matrix via WhatsApp routing.</p>
+            <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 6px;">Request your security review.</h4>
+            <p style="font-size:13.5px; color:#5B6472; margin:0 0 18px; line-height:1.45;">Enter your details below. An Urban Eye consultant will contact you on WhatsApp to review your requirements and schedule the next step.</p>
             
             <div style="display:grid; gap:14px; margin-bottom:20px;">
               <div>
@@ -282,7 +256,11 @@
               </div>
             </div>
 
-            <button class="btn btn-primary btn-block" type="submit" style="min-height:48px; width:100%; justify-content:center;">Get My Security Review on WhatsApp</button>
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <button class="btn btn-primary btn-block" type="submit" style="min-height:48px; width:100%; justify-content:center;">Request My Security Review on WhatsApp</button>
+
+            <p style="font-size:12px; color:#5B6472; margin:12px 0 0; line-height:1.5;">Your details are used only to respond to this request. See our <a href="/privacy-policy/" style="color:#1B2C6E; text-decoration:underline;">Privacy Policy</a>.</p>
           </div>
         </form>
       </div>
