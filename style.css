@@ -285,17 +285,28 @@ body.menu-open .brand-wordmark-accent{
   align-items:center;
   gap:8px;
   color:var(--deep-navy);
-  font:800 13px "Source Sans 3",Arial,sans-serif;
-  padding:11px 14px;
+  font:700 13.5px "Source Sans 3",Arial,sans-serif;
+  padding:10px 14px;
   border:1px solid var(--border);
-  border-radius:10px;
+  border-radius:3px;
   background:var(--light);
   white-space:nowrap;
+  text-decoration:none;
+  transition:border-color .15s ease;
 }
 
-.nav-phone i{
+.nav-phone .ui-icon{
+  width:16px;
+  height:16px;
   color:var(--red);
-  font-size:15px;
+}
+
+.nav-phone:hover{
+  border-color:var(--deep-navy);
+}
+
+.nav-phone-mobile{
+  display:none;
 }
 
 .nav-whatsapp-icon{
@@ -6973,5 +6984,27 @@ h6{
   .cookie-notice-actions .btn{
     flex:1;
     justify-content:center;
+  }
+}
+
+/* Mobile click-to-call button in the top bar */
+@media(max-width:1100px){
+  .nav-phone-mobile{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
+    margin-right:2px;
+    border:1px solid var(--border);
+    border-radius:3px;
+    color:var(--deep-navy);
+    background:var(--light);
+    flex-shrink:0;
+  }
+
+  .nav-phone-mobile .ui-icon{
+    width:18px;
+    height:18px;
   }
 }
