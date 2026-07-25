@@ -117,7 +117,7 @@
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-describedby="drawerIntro">
   
   <div class="drawer-progress-container" style="width:100%; height:6px; background:#EEF2F7; position:relative;">
-    <div id="drawerProgressBar" style="width:20%; height:100%; background:#C4272E; transition:width 0.25s ease;"></div>
+    <div id="drawerProgressBar" style="width:33.3%; height:100%; background:#C4272E; transition:width 0.25s ease;"></div>
   </div>
 
   <div class="drawer-header" style="padding: 20px 24px 14px;">
@@ -162,37 +162,11 @@
         <input type="hidden" name="security_concern" id="drawer-input-security_concern" required>
       </div>
 
-      <!-- Screen 3: The Implication -->
+      <!-- Screen 3: The Lead Capture -->
       <div class="form-step" data-step="3">
         <button type="button" class="back-step-btn" onclick="prevDrawerStep(3)">&larr; Back to previous step</button>
-        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">If someone broke in tonight, how fast would you know?</h4>
-        <div style="display:grid; gap:2px;">
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'detection_speed', 'Instantly (Verified alert on my phone)', 3)">Instantly (Verified alert on my phone)</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'detection_speed', 'Eventually (Whenever the guard calls me)', 3)">Eventually (Whenever the guard calls me)</button>
-          <button type="button" class="option-button" onclick="handleStepSelection(this, 'detection_speed', 'Too late (Probably not until the next morning)', 3)">Too late (Probably not until the next morning)</button>
-        </div>
-        <input type="hidden" name="detection_speed" id="drawer-input-detection_speed" required>
-      </div>
-
-      <!-- Screen 4: The Need-Payoff -->
-      <div class="form-step" data-step="4">
-        <button type="button" class="back-step-btn" onclick="prevDrawerStep(4)">&larr; Back to previous step</button>
-        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What outcome matters most?</h4>
-        <div style="display:grid; gap:2px;">
-          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'desired_outcome', 'Peace of mind for my family', 4)">Peace of mind for my family</button>
-          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'desired_outcome', 'Reliable alerts, not false alarms', 4)">Reliable alerts, not false alarms</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'desired_outcome', 'Reducing business disruption and loss', 4)">Reducing business disruption and loss</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'desired_outcome', 'Protecting staff and premises', 4)">Protecting staff and premises</button>
-          <button type="button" class="option-button" data-track="both" onclick="handleStepSelection(this, 'desired_outcome', 'Knowing which controls to fix before buying equipment', 4)">Knowing which controls to fix before buying equipment</button>
-        </div>
-        <input type="hidden" name="desired_outcome" id="drawer-input-desired_outcome" required>
-      </div>
-
-      <!-- Screen 5: The Lead Capture -->
-      <div class="form-step" data-step="5">
-        <button type="button" class="back-step-btn" onclick="prevDrawerStep(5)">&larr; Back to previous step</button>
-        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 6px;">Let's organize your physical assessment.</h4>
-        <p style="font-size:13.5px; color:#5B6472; margin:0 0 18px; line-height:1.45;">Enter your details below. An Urban Eye specialist will contact you via WhatsApp to review your answers and schedule your on-site survey.</p>
+        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 6px;">Request your on-site review.</h4>
+        <p style="font-size:13.5px; color:#5B6472; margin:0 0 18px; line-height:1.45;">Enter your details below. An Urban Eye consultant will contact you on WhatsApp to review your answers and schedule the site survey.</p>
         
         <div style="display:grid; gap:14px; margin-bottom:20px;">
           <div>
@@ -205,7 +179,11 @@
           </div>
         </div>
 
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
         <button class="btn btn-primary btn-block" type="submit" style="min-height:48px; width:100%; justify-content:center;">Book My On-Site Review via WhatsApp</button>
+
+        <p style="font-size:12px; color:#5B6472; margin:12px 0 0; line-height:1.5;">Your details are used only to respond to this request. See our <a href="/privacy-policy/" style="color:#1B2C6E; text-decoration:underline;">Privacy Policy</a>.</p>
       </div>
     </form>
   </div>
