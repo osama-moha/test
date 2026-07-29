@@ -7236,6 +7236,30 @@ h6{
   left: calc(40% + 130px);
 }
 
+/* Warehouse w11.png: Stock Movement Route */
+.control-line--stock {
+  top: 60%;
+  left: 35%;
+  width: 120px;
+}
+
+.control-line-tag--stock {
+  top: calc(60% - 11px);
+  left: calc(35% + 120px);
+}
+
+/* Warehouse w12.png: Loading Bay Access */
+.control-line--bay {
+  top: 55%;
+  left: 40%;
+  width: 110px;
+}
+
+.control-line-tag--bay {
+  top: calc(55% - 11px);
+  left: calc(40% + 110px);
+}
+
 @keyframes control-line-draw {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
