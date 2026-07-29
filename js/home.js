@@ -4,20 +4,7 @@
 (function () {
   "use strict";
 
-  // Property cards: on hover-capable devices CSS handles reveal; touch devices
-  // toggle an active class via click delegation.
   document.addEventListener("click", function (event) {
-    var card = event.target.closest(".property-card");
-    if (card) {
-      if (!window.matchMedia("(hover: hover)").matches) {
-        var wasActive = card.classList.contains("is-active");
-        document.querySelectorAll(".property-card.is-active").forEach(function (c) {
-          if (c !== card) c.classList.remove("is-active");
-        });
-        card.classList.toggle("is-active", !wasActive);
-      }
-    }
-
     // Drawer CTA delegation — buttons/links carry data-drawer-* attributes.
     var trigger = event.target.closest("[data-drawer]");
     if (trigger && typeof window.openServiceDrawer === "function") {
