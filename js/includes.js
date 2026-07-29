@@ -323,36 +323,14 @@ function initNavbar(){
 
 function setActiveNav(){
   const path = window.location.pathname;
-
-  const servicePages = [
-    "/manned-guarding/",
-    "/ajax-smart-alarms/",
-    "/cctv-installation/",
-    "/access-control/",
-    "/commercial-fire-alarm-systems/",
-    "/electric-fencing/",
-    "/professional-monitoring/"
-  ];
-
-  const servePages = [
-    "/residential-security/",
-    "/retail-storefronts/",
-    "/warehouse-security/",
-    "/airbnb-security/",
-    "/office-security/",
-    "/construction-site-security/"
-  ];
-
   let activeSection = "";
 
   if(path === "/" || path === "/index.html"){
     activeSection = "home";
-  }else if(servicePages.includes(path)){
-    activeSection = "services";
-  }else if(servePages.includes(path)){
-    activeSection = "serve";
   }else if(path === "/programs/"){
     activeSection = "programs";
+  }else if(path.startsWith("/insights/")){
+    activeSection = "insights";
   }else if(path === "/about/"){
     activeSection = "about";
   }else if(path === "/careers/"){
@@ -365,6 +343,22 @@ function setActiveNav(){
 
   const activeLink = document.querySelector(`[data-nav-section="${activeSection}"]`);
   if(activeLink) activeLink.classList.add("is-active");
+}
+
+function initHeaderScroll(){
+  const header = document.querySelector(".topbar");
+  if(!header) return;
+
+  function onScroll(){
+    if(window.scrollY > 40){
+      header.classList.add("is-scrolled");
+    }else{
+      header.classList.remove("is-scrolled");
+    }
+  }
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
 }
 
 function initSmoothAnchors(){
@@ -507,6 +501,7 @@ function initControlLines(){
 document.addEventListener("DOMContentLoaded", async ()=>{
   await loadNavbar();
   await loadFooter();
+  initHeaderScroll();
   initSmoothAnchors();
   initPageReveal();
   initScrollReveal();
