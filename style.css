@@ -1,37 +1,6 @@
-/* Source Sans 3 is loaded via <link rel="stylesheet"> in each page's
-   <head>, not @import — @import is render-blocking and serializes
-   the font fetch behind this stylesheet's own download+parse. */
-
-/* Inter Tight - self-hosted, headings + hero-copy only. Not used on
-   nav links, buttons, or section labels/eyebrows - those stay on
-   Source Sans 3 (small UI text reads better on a workhorse face;
-   a tighter display face like this is meant for large heading sizes
-   where its character actually shows). */
-@font-face{
-  font-family:"Inter Tight";
-  src:url("/fonts/inter-tight-v9-latin-500.woff2") format("woff2");
-  font-weight:500;
-  font-style:normal;
-  font-display:swap;
-}
-
-@font-face{
-  font-family:"Inter Tight";
-  src:url("/fonts/inter-tight-v9-latin-600.woff2") format("woff2");
-  font-weight:600;
-  font-style:normal;
-  font-display:swap;
-}
-
-@font-face{
-  font-family:"Inter Tight";
-  src:url("/fonts/inter-tight-v9-latin-700.woff2") format("woff2");
-  font-weight:700;
-  font-style:normal;
-  font-display:swap;
-}
-
 :root{
+  --font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-primary: "Barlow", "Source Sans 3", Arial, sans-serif;
   --deep-navy:#0D1430;
   --navy:#1B2C6E;
   --muted-navy:#17245A;
@@ -60,7 +29,7 @@ body{
   margin:0;
   background:#fff;
   color:var(--charcoal);
-  font-family:"Source Sans 3",Arial,sans-serif;
+  font-family:var(--font-primary);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
@@ -76,14 +45,14 @@ h3,
 h4,
 h5,
 h6{
-  font-family:"Inter Tight","Source Sans 3",Arial,sans-serif;
+  font-family:var(--font-display);
 }
 
 .brand-name,
 .nav-link,
 .btn,
 .section-label{
-  font-family:"Source Sans 3",Arial,sans-serif;
+  font-family:var(--font-primary);
 }
 
 h1,
@@ -6825,7 +6794,8 @@ a.nav-serve-monitoring:hover strong{
    ========================================================= */
 
 :root{
-  --font-primary:"Source Sans 3",Arial,sans-serif;
+  --font-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --font-primary:"Barlow","Source Sans 3",Arial,sans-serif;
 }
 
 body{
@@ -6846,32 +6816,35 @@ body{
   font-family:var(--font-primary);
 }
 
-h1,
-h2{
-  font-weight:600;
-  letter-spacing:-.025em;
+h1{
+  font-family:var(--font-display);
+  font-weight:900;
+  letter-spacing:-.01em;
 }
 
+h2,
 h3,
 h4,
 h5,
 h6{
-  font-weight:500;
-  letter-spacing:-.025em;
+  font-family:var(--font-display);
+  font-weight:700;
+  letter-spacing:0;
 }
 
 .hero h1,
 .page-hero h1{
-  font-weight:600;
-  letter-spacing:-.035em;
-  font-size: clamp(32px, 4vw, 48px);
-  line-height: 1.15;
+  font-family:var(--font-display);
+  font-weight:900;
+  letter-spacing:-.015em;
+  font-size: clamp(34px, 4.4vw, 52px);
+  line-height: 1.1;
 }
 
 .hero-copy,
 .page-hero p,
 .section-intro{
-  font-family:"Inter Tight","Source Sans 3",Arial,sans-serif;
+  font-family:var(--font-primary);
   font-weight:500;
 }
 

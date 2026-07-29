@@ -583,7 +583,7 @@
   #home .hero-copy{
     max-width:680px;
     color:rgba(255,255,255,.80);
-    font-family:"Inter Tight","Source Sans 3",Arial,sans-serif;
+    font-family:var(--font-primary);
     font-size:clamp(1rem,1.35vw,1.18rem);
     line-height:1.6;
     font-weight:500;
