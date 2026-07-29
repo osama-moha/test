@@ -484,6 +484,26 @@ function preselectInterestFromUrl(){
   }
 }
 
+function initControlLines(){
+  const overlays = document.querySelectorAll("[data-control-line]");
+  if(!overlays.length) return;
+
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.2});
+
+    overlays.forEach((overlay)=> observer.observe(overlay));
+  }else{
+    overlays.forEach((overlay)=> overlay.classList.add("is-visible"));
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async ()=>{
   await loadNavbar();
   await loadFooter();
@@ -492,6 +512,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   initScrollReveal();
   initHeroParallax();
   initPageProgress();
+  initControlLines();
   preselectInterestFromUrl();
   initCookieNotice();
 });
