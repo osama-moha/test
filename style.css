@@ -7212,28 +7212,28 @@ h6{
   left: calc(43% + 118px);
 }
 
-/* Construction Image 1: Temporary Access Route */
+/* Construction Image 1: Temporary Access Route (1.jpeg - central corridor walkway) */
 .control-line--access {
   top: 58%;
-  left: 42%;
+  left: 38%;
   width: 115px;
 }
 
 .control-line-tag--access {
   top: calc(58% - 11px);
-  left: calc(42% + 115px);
+  left: calc(38% + 115px);
 }
 
-/* Construction Image 2: Temporary Material Storage */
+/* Construction Image 2: Temporary Material Storage (2.jpeg - central foreground rubble pile) */
 .control-line--storage {
-  top: 68%;
-  left: 43%;
+  top: 66%;
+  left: 40%;
   width: 130px;
 }
 
 .control-line-tag--storage {
-  top: calc(68% - 11px);
-  left: calc(43% + 130px);
+  top: calc(66% - 11px);
+  left: calc(40% + 130px);
 }
 
 @keyframes control-line-draw {
