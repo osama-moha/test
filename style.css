@@ -6944,6 +6944,201 @@ h6{
   }
 
   .cookie-notice-actions .btn{
+.section-eyebrow::before,
+.section-eyebrow::after,
+.hero-eyebrow::before,
+.hero-eyebrow::after,
+.section-label::before,
+.section-label::after,
+.eyebrow::before,
+.eyebrow::after,
+.kicker::before,
+.kicker::after,
+.section-kicker::before,
+.section-kicker::after{
+  display:none;
+  content:none;
+}
+
+.hero-eyebrow .dot,
+.section-eyebrow .dot,
+.section-label .dot,
+.eyebrow .dot{
+  display:none;
+}
+
+.package-tag{
+  display:inline-flex;
+  align-self:flex-start;
+  padding:6px 10px;
+  border:0;
+  border-left:3px solid var(--red, #C4272E);
+  border-radius:0;
+  background:#f3f5f9;
+  color:var(--red, #C4272E);
+  font-size:11px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:0;
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   Corporate typography and action refinement
+   Applied site-wide without changing page layout or routing.
+   ========================================================= */
+
+:root{
+  --font-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --font-primary:"Barlow","Source Sans 3",Arial,sans-serif;
+}
+
+body{
+  font-family:var(--font-primary);
+  font-weight:400;
+}
+
+.brand-name,
+.brand-wordmark,
+.nav-link,
+.btn,
+.section-label,
+.section-eyebrow,
+.hero-eyebrow,
+.eyebrow,
+.kicker,
+.section-kicker{
+  font-family:var(--font-primary);
+}
+
+h1{
+  font-family:var(--font-display);
+  font-weight:900;
+  letter-spacing:-.01em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family:var(--font-display);
+  font-weight:700;
+  letter-spacing:0;
+}
+
+.hero h1,
+.page-hero h1{
+  font-family:var(--font-display);
+  font-weight:900;
+  letter-spacing:-.015em;
+  font-size: clamp(34px, 4.4vw, 52px);
+  line-height: 1.1;
+}
+
+.hero-copy,
+.page-hero p,
+.section-intro{
+  font-family:var(--font-primary);
+  font-weight:500;
+}
+
+.brand-wordmark{
+  font-weight:700;
+  letter-spacing:-.015em;
+}
+
+.section-label,
+.section-eyebrow,
+.hero-eyebrow,
+.eyebrow,
+.kicker,
+.section-kicker{
+  font-weight:700;
+  letter-spacing:.10em;
+}
+
+.btn-block{
+  width:100%;
+  justify-content:center;
+}
+
+.nav-actions .btn{
+  min-height:48px;
+  padding:0 22px;
+}
+
+.form-card .btn{
+  min-height:50px;
+}
+
+@media(max-width:900px){
+  .btn{
+    min-height:48px;
+    padding:0 20px;
+    font-size:15px;
+  }
+}
+
+}
+/* ============================
+   Cookie consent notice
+   ============================ */
+.cookie-notice{
+  position:fixed;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  max-width:760px;
+  margin:0 auto;
+  padding:16px 20px;
+  background:#0D1430;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:3px;
+  box-shadow:0 12px 32px rgba(13,20,48,.35);
+}
+
+.cookie-notice-text{
+  margin:0;
+  font-size:13.5px;
+  line-height:1.5;
+  color:rgba(255,255,255,.85);
+}
+
+.cookie-notice-text a{
+  color:#FFFFFF;
+  text-decoration:underline;
+}
+
+.cookie-notice-actions{
+  display:flex;
+  gap:8px;
+  flex-shrink:0;
+}
+
+.cookie-notice-decline{
+  background:transparent;
+  color:rgba(255,255,255,.85);
+  border:1px solid rgba(255,255,255,.35);
+}
+
+.cookie-notice-decline:hover{
+  color:#FFFFFF;
+  border-color:#FFFFFF;
+}
+
+@media (max-width:640px){
+  .cookie-notice{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .cookie-notice-actions .btn{
     flex:1;
     justify-content:center;
   }
@@ -6999,8 +7194,8 @@ h6{
   color:#fff;
   border:1px solid rgba(196,39,46,.5);
   border-left:3px solid var(--red);
-  padding:4px 10px;
-  font-size:11px;
+  padding:3px 8px;
+  font-size:10.5px;
   font-weight:700;
   font-family:var(--font-primary);
   letter-spacing:.04em;
