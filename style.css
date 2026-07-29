@@ -7212,6 +7212,30 @@ h6{
   left: calc(43% + 118px);
 }
 
+/* Construction Image 1: Temporary Access Route */
+.control-line--access {
+  top: 58%;
+  left: 42%;
+  width: 115px;
+}
+
+.control-line-tag--access {
+  top: calc(58% - 11px);
+  left: calc(42% + 115px);
+}
+
+/* Construction Image 2: Temporary Material Storage */
+.control-line--storage {
+  top: 68%;
+  left: 43%;
+  width: 130px;
+}
+
+.control-line-tag--storage {
+  top: calc(68% - 11px);
+  left: calc(43% + 130px);
+}
+
 @keyframes control-line-draw {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
