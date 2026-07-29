@@ -7147,96 +7147,130 @@ h6{
 /* =========================================================
    Site Control Line Motif (Signature Operational Element)
    ========================================================= */
-.construction-hero-media,
-.warehouse-hero-media{
-  position:relative;
+/* =========================================================
+   Site Control Line Motif (Signature Operational Element)
+   ========================================================= */
+.control-media {
+  position: relative;
+  overflow: hidden;
 }
 
-.control-line-overlay{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:3;
-  overflow:hidden;
+.control-media > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.control-line-container{
-  position:absolute;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  pointer-events:none;
+.control-line,
+.control-line-tag {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
 }
 
-.control-line-dot{
-  width:8px;
-  height:8px;
-  background:var(--red);
-  border-radius:50%;
-  box-shadow:0 0 0 3px rgba(196,39,46,.28);
-  flex-shrink:0;
+.control-line {
+  display: block;
+  height: 2px;
+  width: 118px;
+  background: var(--red, #c4272e);
+  transform-origin: left center;
+  animation: control-line-draw 520ms cubic-bezier(.16, 1, .3, 1) both;
 }
 
-.control-line-segment{
-  height:2px;
-  background:var(--red);
-  transform-origin:left center;
-  transform:scaleX(0);
-  transition:transform 550ms cubic-bezier(.16,1,.3,1);
+.control-line-tag {
+  padding: 3px 8px;
+  background: #0d1430;
+  color: #fff;
+  font-family: var(--font-primary);
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-left: 3px solid var(--red, #c4272e);
+  border-radius: 2px;
 }
 
-.control-line-overlay.is-visible .control-line-segment{
-  transform:scaleX(1);
+/* Warehouse: line starts at left racking towards loading area */
+.control-line--warehouse {
+  top: 58%;
+  left: 14%;
+  width: 118px;
 }
 
-.control-line-tag{
-  background:rgba(13,20,48,.92);
-  color:#fff;
-  border:1px solid rgba(196,39,46,.5);
-  border-left:3px solid var(--red);
-  padding:3px 8px;
-  font-size:10.5px;
-  font-weight:700;
-  font-family:var(--font-primary);
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  border-radius:2px;
-  white-space:nowrap;
-  opacity:0;
-  transform:translateY(4px);
-  transition:opacity 350ms ease 300ms,transform 350ms ease 300ms;
+.control-line-tag--warehouse {
+  top: calc(58% - 11px);
+  left: calc(14% + 118px);
 }
 
-.control-line-overlay.is-visible .control-line-tag{
-  opacity:1;
-  transform:translateY(0);
+/* Construction: line points from material area towards label */
+.control-line--construction {
+  top: 64%;
+  left: 43%;
+  width: 118px;
 }
 
-@media(max-width:640px){
-  .control-line-segment{
-    height:2.5px;
-    opacity:1;
+.control-line-tag--construction {
+  top: calc(64% - 11px);
+  left: calc(43% + 118px);
+}
+
+@keyframes control-line-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control-line {
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .control-line {
+    display: block;
+    height: 2px;
+    opacity: 1;
   }
 
-  .control-line-dot{
-    width:9px;
-    height:9px;
-    box-shadow:0 0 0 3px rgba(196,39,46,.4);
-  }
-
-  .control-line-tag{
-    display:none;
+  .control-line-tag {
+    display: none;
   }
 }
 
-@media(prefers-reduced-motion:reduce){
-  .control-line-segment{
-    transition:none !important;
-    transform:scaleX(1) !important;
-  }
-  .control-line-tag{
-    transition:none !important;
-    opacity:1 !important;
-    transform:translateY(0) !important;
-  }
+/* Brand Proof Panel */
+.brand-proof-panel {
+  margin-top: 32px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.brand-proof-panel img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 380px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.brand-proof-caption {
+  padding: 16px 20px;
+  background: #F5F7FA;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.brand-proof-caption strong {
+  color: var(--deep-navy);
+  font-family: var(--font-display);
+  font-size: 15px;
+  display: block;
+  margin-bottom: 2px;
 }
