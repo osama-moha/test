@@ -119,10 +119,10 @@
 </script>
 
 <main>
-  <section class="page-hero">
+  <section class="hero page-hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <p class="section-label">Manned Guarding in Nairobi</p>
+        <p class="section-label" style="color:var(--red);">Manned Guarding in Nairobi</p>
         <h1>Personnel guided by a clear site process.</h1>
         <p class="hero-copy">
           Urban Eye deploys licensed guards with written post instructions, documented checks and clear escalation routes. Every site has an accountable operating record.
@@ -131,23 +131,23 @@
           <a onclick="return openServiceDrawer('manned-guarding','Manned Guarding','Request a Manned Guarding Assessment','Share a few details and Urban Eye will assess your guarding needs and shift coverage.')" class="btn btn-primary" href="/contact/?service=guarding">Request a Manned Guarding Assessment</a>
         </div>
       </div>
-      <div class="hero-photo control-media reveal-up">
-        <img
-          src="/urban-eye-assets/guard3-800.webp"
-          srcset="
-            /urban-eye-assets/guard3-480.webp 480w,
-            /urban-eye-assets/guard3-800.webp 800w,
-            /urban-eye-assets/guard3-1100.webp 1100w
-          "
-          sizes="(max-width: 768px) 100vw, 50vw"
-          width="885"
-          height="590"
-          fetchpriority="high"
-          decoding="async"
-          alt="Urban Eye Security guards at a Nairobi property gate">
-        <span class="control-line control-line--manned-hero" aria-hidden="true"></span>
-        <span class="control-line-tag control-line-tag--manned-hero" aria-hidden="true">POST CONTROL: GATE & ENTRY</span>
-      </div>
+    </div>
+    <div class="hero-photo control-media reveal-up">
+      <img
+        src="/urban-eye-assets/guard3-800.webp"
+        srcset="
+          /urban-eye-assets/guard3-480.webp 480w,
+          /urban-eye-assets/guard3-800.webp 800w,
+          /urban-eye-assets/guard3-1100.webp 1100w
+        "
+        sizes="(max-width: 768px) 100vw, 50vw"
+        width="885"
+        height="590"
+        fetchpriority="high"
+        decoding="async"
+        alt="Urban Eye Security guards at a Nairobi property gate">
+      <span class="control-line control-line--manned-hero" aria-hidden="true"></span>
+      <span class="control-line-tag control-line-tag--manned-hero" aria-hidden="true">POST CONTROL: GATE & ENTRY</span>
     </div>
   </section>
 
@@ -160,13 +160,16 @@
         <p class="section-copy" style="margin-top:16px;color:var(--muted);line-height:1.55;font-size:15px;">The risk is not simply that a guard is absent. It is that activity is not checked, incidents are not recorded and nobody owns the next action.</p>
       </div>
       <div>
-        <figure class="brand-proof-panel reveal-up" style="margin-top: 0;">
-          <img src="/urban-eye-assets/guard3.webp" alt="Urban Eye security team at property access gate">
-          <figcaption>
-            <strong>Shift and post review</strong>
-            <span>Guard positioning, access procedures and handover records are reviewed against the agreed site process.</span>
-          </figcaption>
-        </figure>
+        <div class="card" style="background:#fff;border-left:4px solid var(--red);padding:32px 28px;box-shadow:var(--shadow-soft);">
+          <p class="section-label" style="margin-bottom:8px;color:var(--red);">Unmonitored Guarding Exposure</p>
+          <h3 style="font-size:20px;color:var(--deep-navy);margin-bottom:12px;font-family:var(--font-display);">Operational risks of undefined posts</h3>
+          <ul style="padding-left:18px;margin:0;color:var(--muted);font-size:15px;line-height:1.65;">
+            <li style="margin-bottom:10px;">Entry gates remain open or unmonitored during peak movement hours.</li>
+            <li style="margin-bottom:10px;">Visitors and delivery vehicles enter without time-stamped log entries.</li>
+            <li style="margin-bottom:10px;">Patrol routes skip dark perimeter sections and unmonitored blind spots.</li>
+            <li>Incidents occur without documented records or supervisor escalation.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -238,32 +241,32 @@
       </div>
 
       <div class="process-list">
-        <div class="process-step">
-          <div class="step-number">01</div>
+        <div class="process-item">
+          <span class="step-number">01</span>
           <div>
-            <strong>Site assessment</strong>
-            <span>Review access points, operating hours, key assets and the areas that require control.</span>
+            <h3>Site assessment</h3>
+            <p>Review access points, operating hours, key assets and the areas that require control.</p>
           </div>
         </div>
-        <div class="process-step">
-          <div class="step-number">02</div>
+        <div class="process-item">
+          <span class="step-number">02</span>
           <div>
-            <strong>Post-order setup</strong>
-            <span>Prepare site-specific guard instructions, records and escalation contacts.</span>
+            <h3>Post-order setup</h3>
+            <p>Prepare site-specific guard instructions, records and escalation contacts.</p>
           </div>
         </div>
-        <div class="process-step">
-          <div class="step-number">03</div>
+        <div class="process-item">
+          <span class="step-number">03</span>
           <div>
-            <strong>Guard deployment</strong>
-            <span>Position personnel according to agreed posts, shifts and access procedures.</span>
+            <h3>Guard deployment</h3>
+            <p>Position personnel according to agreed posts, shifts and access procedures.</p>
           </div>
         </div>
-        <div class="process-step">
-          <div class="step-number">04</div>
+        <div class="process-item">
+          <span class="step-number">04</span>
           <div>
-            <strong>Ongoing review</strong>
-            <span>Use shift handovers and supervisor checks to maintain the agreed operating standard.</span>
+            <h3>Ongoing review</h3>
+            <p>Use shift handovers and supervisor checks to maintain the agreed operating standard.</p>
           </div>
         </div>
       </div>

@@ -7361,25 +7361,25 @@ h6{
    ========================================================= */
 
 .control-line--manned-hero {
-  top: 52%;
-  left: 38%;
-  width: 140px;
-}
-
-.control-line-tag--manned-hero {
-  top: calc(52% - 11px);
-  left: calc(38% + 140px);
-}
-
-.control-line--manned-oversight {
-  top: 48%;
-  left: 28%;
+  top: 58%;
+  left: 15%;
   width: 120px;
 }
 
+.control-line-tag--manned-hero {
+  top: calc(58% - 11px);
+  left: calc(15% + 120px);
+}
+
+.control-line--manned-oversight {
+  top: 50%;
+  left: 20%;
+  width: 110px;
+}
+
 .control-line-tag--manned-oversight {
-  top: calc(48% - 11px);
-  left: calc(28% + 120px);
+  top: calc(50% - 11px);
+  left: calc(20% + 110px);
 }
 
 .guarding-framework-grid {
