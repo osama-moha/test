@@ -184,6 +184,8 @@ function goToFormStep(stepNum, config) {
   }
 }
 
+let stepTimeoutId = null;
+
 function handleUnifiedStepSelection(element, fieldId, value, currentStep, config) {
   const parent = element.parentElement;
   parent.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
@@ -196,8 +198,10 @@ function handleUnifiedStepSelection(element, fieldId, value, currentStep, config
     applyLeadTrackFilter(config.formSelector, element.dataset.track);
   }
 
-  setTimeout(() => {
+  if (stepTimeoutId) clearTimeout(stepTimeoutId);
+  stepTimeoutId = setTimeout(() => {
     goToFormStep(currentStep + 1, config);
+    stepTimeoutId = null;
   }, 220);
 }
 
