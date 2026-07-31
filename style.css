@@ -7355,3 +7355,117 @@ h6{
   color: var(--muted, #5b6472);
   font-family: var(--font-primary);
 }
+
+/* =========================================================
+   Manned Guarding Operational Components
+   ========================================================= */
+
+.control-line--manned-hero {
+  top: 52%;
+  left: 38%;
+  width: 140px;
+}
+
+.control-line-tag--manned-hero {
+  top: calc(52% - 11px);
+  left: calc(38% + 140px);
+}
+
+.control-line--manned-oversight {
+  top: 48%;
+  left: 28%;
+  width: 120px;
+}
+
+.control-line-tag--manned-oversight {
+  top: calc(48% - 11px);
+  left: calc(28% + 120px);
+}
+
+.guarding-framework-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.guarding-panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+
+.guarding-panel-label {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.guarding-panel h3 {
+  font-size: 20px;
+  color: var(--deep-navy);
+  margin: 0 0 10px;
+}
+
+.guarding-panel p {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.matrix-column {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+}
+
+.matrix-column h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--deep-navy);
+  margin: 0 0 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--red);
+  letter-spacing: 0.02em;
+}
+
+.matrix-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.matrix-list li {
+  font-size: 14.5px;
+  color: var(--charcoal);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+
+.matrix-list li:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .guarding-framework-grid,
+  .matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
