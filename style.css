@@ -7489,3 +7489,120 @@ h6{
     gap: 16px;
   }
 }
+
+/* =========================================================
+   Risk Review Operational Components
+   ========================================================= */
+
+.risk-hero-media {
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 380px;
+  max-height: 420px;
+  background: #0d1430;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.risk-hero-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.control-line--risk {
+  top: 48%;
+  left: 24%;
+  width: 120px;
+}
+
+.control-line-tag--risk {
+  top: calc(48% - 11px);
+  left: calc(24% + 120px);
+}
+
+.risk-framework-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.risk-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+
+.risk-panel-label {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.risk-panel h3 {
+  font-size: 19px;
+  color: #fff;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.risk-panel p {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.site-types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.site-type-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border-top: 3px solid var(--deep-navy);
+}
+
+.site-type-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--deep-navy);
+  margin: 0 0 8px;
+}
+
+.site-type-card p {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .risk-framework-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-types-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
