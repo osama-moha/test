@@ -291,7 +291,7 @@ body.menu-open .brand-wordmark-accent{
 
 .nav-toggle,
 .nav-close{
-  display:none;
+  display:none !important;
   border:0;
   background:transparent;
   color:var(--deep-navy);
@@ -303,6 +303,7 @@ body.menu-open .brand-wordmark-accent{
   z-index:120;
   font-size:28px;
   padding:6px;
+  display:none !important;
 }
 
 .nav-close{
@@ -436,9 +437,8 @@ body.menu-open .brand-wordmark-accent{
 
 .btn,
 .button,
-button,
-[type="submit"],
-[type="button"] {
+button.btn,
+[type="submit"] {
   display:inline-flex;
   align-items:center;
   justify-content:center;
