@@ -6851,8 +6851,8 @@ h3,
 h4,
 h5,
 h6{
-  font-family:var(--font-display);
-  font-weight:700;
+  font-family:var(--font-primary, 'Barlow', sans-serif);
+  font-weight:600;
   letter-spacing:0;
 }
 
@@ -7047,8 +7047,8 @@ h3,
 h4,
 h5,
 h6{
-  font-family:var(--font-display);
-  font-weight:700;
+  font-family:var(--font-primary, 'Barlow', sans-serif);
+  font-weight:600;
   letter-spacing:0;
 }
 
@@ -7344,8 +7344,8 @@ h6{
   margin-bottom: 4px;
   font-size: 0.875rem;
   color: var(--deep-navy, #0d1430);
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-weight: 600;
   letter-spacing: 0;
 }
 
@@ -7457,7 +7457,8 @@ h6{
 }
 
 .matrix-column h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-weight: 600;
   font-size: 20px;
   color: var(--deep-navy);
   margin: 0 0 20px;
@@ -7582,7 +7583,8 @@ h6{
 }
 
 .site-type-card h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-weight: 600;
   font-size: 20px;
   color: var(--deep-navy);
   margin: 0 0 8px;
@@ -7877,4 +7879,17 @@ h6{
   font-weight: 800;
   color: #111827;
   margin: 0;
+}
+
+
+/* Global Rule: Subheadings under 24px use regular-width Barlow 600 */
+.monitor-row h3,
+.monitor-step h3,
+.monitor-tier h3,
+.matrix-column h3,
+.site-type-card h3,
+.guarding-panel h3,
+.risk-panel h3 {
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-weight: 600;
 }
