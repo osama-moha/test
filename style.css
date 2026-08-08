@@ -6859,10 +6859,11 @@ h6{
 .hero h1,
 .page-hero h1{
   font-family:var(--font-display);
-  font-weight:900;
-  letter-spacing:-.015em;
-  font-size: clamp(34px, 4.4vw, 52px);
+  font-weight:800;
+  letter-spacing:0.018em;
+  font-size: clamp(32px, 4.2vw, 46px);
   line-height: 1.1;
+  max-width: 900px;
 }
 
 .hero-copy,
@@ -7054,10 +7055,11 @@ h6{
 .hero h1,
 .page-hero h1{
   font-family:var(--font-display);
-  font-weight:900;
-  letter-spacing:-.015em;
-  font-size: clamp(34px, 4.4vw, 52px);
+  font-weight:800;
+  letter-spacing:0.018em;
+  font-size: clamp(32px, 4.2vw, 46px);
   line-height: 1.1;
+  max-width: 900px;
 }
 
 .hero-copy,
