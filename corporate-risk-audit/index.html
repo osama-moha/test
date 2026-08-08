@@ -9,6 +9,9 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    var uecConsent=null;try{uecConsent=localStorage.getItem('uec_cookie_consent');}catch(e){}
+    var uecGranted=uecConsent==='granted'?'granted':'denied';
+    gtag('consent','default',{'ad_storage':uecGranted,'ad_user_data':uecGranted,'ad_personalization':uecGranted,'analytics_storage':uecGranted});
     gtag('js', new Date());
 
     gtag('config', 'AW-17823714787');
@@ -32,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&amp;family=Barlow:wght@400;500;600;700&amp;display=swap"/>
-<link rel="stylesheet" href="/style.css?v=20260717b"/>
+<link rel="stylesheet" href="/style.css?v=20260808a"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SecurityService","name":"Urban Eye Security","url":"https://urbaneyesecurity.co.ke/","logo":"https://urbaneyesecurity.co.ke/urban-eye-assets/Icon-only%20version.png","telephone":"+254 768 055 555","email":"info@urbaneyesecurity.co.ke","address":{"@type":"PostalAddress","streetAddress":"St. Ellis, Wabera Street, Nairobi CBD","addressLocality":"Nairobi","addressCountry":"KE"},"areaServed":["Nairobi","Kenya"],"slogan":"Smart Protection. Human Response."}
 </script>
@@ -54,7 +57,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://urbaneyesecurity.co.ke/"},{"@type":"ListItem","position":2,"name":"Corporate Risk Audit","item":"https://urbaneyesecurity.co.ke/corporate-risk-audit/"}]}
 </script>
 
-<main class="corporate-risk-audit-page">
+<main>
   <section class="page-hero">
     <div class="container">
       <p class="section-label">Corporate Risk Audit</p>
@@ -67,8 +70,8 @@
         and a phased remediation plan.
       </p>
       <p class="hero-note" style="color:rgba(255,255,255,.74); margin-top:18px; max-width:760px;">
-        From <strong>KES 15,000 per site</strong>. Audit fee credited in full against an Urban Eye
-        implementation engagement of <strong>KES 100,000 or more</strong> confirmed within 90 days.
+        Fee quoted by site scope and confirmed in writing before scheduling.
+        Credited in full against an Urban Eye implementation engagement.
         Findings delivered within <strong>5 working days</strong> of the site survey.
       </p>
       <div class="hero-actions" style="margin-top:28px;">
@@ -143,51 +146,44 @@
         </div>
         <div>
           <p class="section-intro">
-            The audit is intentionally priced for serious buyers who need a documented basis
-            for procurement, budgeting, or management approval before deployment begins.
+            The fee is quoted per site, confirmed in writing before scheduling,
+            and credited in full if you proceed to implementation.
           </p>
         </div>
       </div>
 
-      <div class="package-grid reveal-stagger">
-        <article class="card package-card">
-          <span class="package-tag">Standard Site</span>
-          <h3>Single-site audit</h3>
-          <p class="package-price" style="font-size:28px; font-weight:900; color:var(--deep-navy); margin:0;">
-            KES 15,000
-          </p>
-          <p class="best-for">Best for offices, shops, compounds, and straightforward commercial properties.</p>
-          <ul class="package-list">
-            <li>One site survey</li>
-            <li>Written findings report</li>
-            <li>Priority recommendations</li>
-            <li>Findings call with your team</li>
-          </ul>
-        </article>
-
-        <article class="card package-card featured">
-          <span class="package-tag">Complex Site</span>
-          <h3>Multi-building or high-risk site</h3>
-          <p class="package-price" style="font-size:28px; font-weight:900; color:var(--deep-navy); margin:0;">
-            From KES 25,000
-          </p>
-          <p class="best-for">Best for warehouses, estates, active construction sites, and larger compounds.</p>
-          <ul class="package-list">
-            <li>Expanded survey scope</li>
-            <li>Multi-zone findings</li>
-            <li>Higher operational complexity review</li>
-            <li>Phased remediation planning</li>
-          </ul>
-        </article>
-
-        <article class="card package-card">
-          <span class="package-tag">Audit Credit</span>
-          <h3>Fee applied to implementation</h3>
+      <div class="grid-2 reveal-stagger">
+        <article class="card">
+          <h3>Quoted by site scope</h3>
           <p>
-            The audit fee is credited in full against an Urban Eye implementation engagement
-            of KES 100,000 or more confirmed within 90 days.
+            The fee reflects the size, complexity, and number of buildings or zones
+            to be surveyed. Urban Eye confirms a fixed fee in writing before the
+            survey is scheduled.
           </p>
-          <p class="best-for">Useful when you want a serious first step without duplicating cost.</p>
+        </article>
+
+        <article class="card">
+          <h3>Credited against implementation</h3>
+          <p>
+            If you proceed to an Urban Eye implementation engagement, the full
+            audit fee is applied as a credit against the project cost.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>The report belongs to you</h3>
+          <p>
+            Whether or not you proceed with Urban Eye, the written report is yours.
+            Use it internally for budgeting, procurement, or management review.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Delivered within 5 working days</h3>
+          <p>
+            Standard audit scopes are completed and delivered within 5 working
+            days of the site survey.
+          </p>
         </article>
       </div>
 
@@ -486,7 +482,7 @@
         <details>
           <summary>What happens after the audit?</summary>
           <p>
-            You receive the report, review the recommendations internally, and decide whether Urban Eye should quote the approved scope. If you proceed within the stated threshold and time window, the audit fee is credited in full.
+            You receive the report, review the recommendations internally, and decide whether Urban Eye should quote the approved scope. If you proceed to implementation, the audit fee is credited in full.
           </p>
         </details>
 
@@ -508,6 +504,16 @@
           <summary>Do you guarantee loss prevention?</summary>
           <p>
             No security approach eliminates all risk. The audit identifies vulnerabilities, prioritizes mitigations, and helps reduce preventable exposure through stronger controls, visibility, and response planning.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I start with a complimentary site review instead?</summary>
+          <p>
+            Yes. Urban Eye's <a href="/risk-review/">Site Security Review</a> is a complimentary
+            site walkthrough that identifies the main access gaps and vulnerabilities on your
+            property. If the site needs a deeper written assessment with severity ratings and a
+            remediation plan, the Corporate Risk Audit is the next step.
           </p>
         </details>
       </div>
