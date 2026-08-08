@@ -108,15 +108,20 @@ function openServiceDrawer(pageSource, serviceInterest, title, intro){
     else step.classList.remove('active');
   });
 
-  const progressBar = document.getElementById('drawerProgressBar');
-  if (progressBar) progressBar.style.width = '20%';
+  updateStepIndicator('drawer', 1);
 
-  document.querySelectorAll('#conversational-drawer-form .option-button').forEach(btn => btn.classList.remove('selected'));
+  document.querySelectorAll('#conversational-drawer-form input[type="radio"]').forEach(radio => radio.checked = false);
   
   if(document.getElementById('drawer-input-property_type')) document.getElementById('drawer-input-property_type').value = '';
   if(document.getElementById('drawer-input-security_concern')) document.getElementById('drawer-input-security_concern').value = '';
-  if(document.getElementById('drawer-input-detection_speed')) document.getElementById('drawer-input-detection_speed').value = '';
-  if(document.getElementById('drawer-input-desired_outcome')) document.getElementById('drawer-input-desired_outcome').value = '';
+  
+  const step1Next = document.getElementById('drawerStep1Next');
+  const step2Next = document.getElementById('drawerStep2Next');
+  const submitBtn = document.getElementById('drawerSubmitBtn');
+
+  if (step1Next) step1Next.disabled = true;
+  if (step2Next) step2Next.disabled = true;
+  if (submitBtn) submitBtn.disabled = true;
 
   backdrop.classList.add("open");
   drawer.classList.add("open");
@@ -157,7 +162,7 @@ const DRAWER_FORM_CONFIG = {
   inputPrefix: 'drawer-input-',
   nameFieldId: 'drawer-name',
   phoneFieldId: 'drawer-phone',
-  progressBarId: 'drawerProgressBar',
+  surfacePrefix: 'drawer',
   totalSteps: 3
 };
 
@@ -166,9 +171,33 @@ const CONTACT_FORM_CONFIG = {
   inputPrefix: 'contact-input-',
   nameFieldId: 'contact-page-name',
   phoneFieldId: 'contact-page-phone',
-  progressBarId: 'contactProgressBar',
+  surfacePrefix: 'contact',
   totalSteps: 3
 };
+
+const STEP_TITLES = {
+  1: '01 Site Details',
+  2: '02 Requirements',
+  3: '03 Contact'
+};
+
+function updateStepIndicator(surfacePrefix, stepNum) {
+  const countEl = document.getElementById(surfacePrefix + 'StepCount');
+  const titleEl = document.getElementById(surfacePrefix + 'StepTitle');
+
+  if (countEl) countEl.textContent = `STEP ${stepNum} / 3`;
+  if (titleEl) titleEl.textContent = STEP_TITLES[stepNum] || '';
+
+  const seg1 = document.getElementById(surfacePrefix + 'Seg1');
+  const seg2 = document.getElementById(surfacePrefix + 'Seg2');
+  const seg3 = document.getElementById(surfacePrefix + 'Seg3');
+
+  if (seg1 && seg2 && seg3) {
+    seg1.className = 'step-segment' + (stepNum >= 1 ? ' active' : '');
+    seg2.className = 'step-segment' + (stepNum >= 2 ? ' active' : '');
+    seg3.className = 'step-segment' + (stepNum >= 3 ? ' active' : '');
+  }
+}
 
 function goToFormStep(stepNum, config) {
   if (stepNum < 1 || stepNum > config.totalSteps) return;
@@ -178,9 +207,89 @@ function goToFormStep(stepNum, config) {
     step.classList.toggle('active', stepAttr === stepNum);
   });
 
-  const progressBar = document.getElementById(config.progressBarId);
-  if (progressBar) {
-    progressBar.style.width = (stepNum / config.totalSteps * 100) + '%';
+  updateStepIndicator(config.surfacePrefix, stepNum);
+}
+
+function handleTileRadioChange(radioEl, surface, stepNum) {
+  const inputId = surface + '-input-' + (stepNum === 1 ? 'property_type' : 'security_concern');
+  const targetedInput = document.getElementById(inputId);
+  if (targetedInput) targetedInput.value = radioEl.value;
+
+  if (stepNum === 1 && radioEl.dataset.track) {
+    const selector = surface === 'drawer' ? '#conversational-drawer-form' : '#contact-step-form';
+    applyLeadTrackFilter(selector, radioEl.dataset.track);
+  }
+
+  const nextBtnId = surface + 'Step' + stepNum + 'Next';
+  const nextBtn = document.getElementById(nextBtnId);
+  if (nextBtn) {
+    nextBtn.disabled = false;
+  }
+}
+
+function nextDrawerStep(fromStep) {
+  if (fromStep === 1) {
+    const val = document.getElementById('drawer-input-property_type').value;
+    if (!val) return;
+  } else if (fromStep === 2) {
+    const val = document.getElementById('drawer-input-security_concern').value;
+    if (!val) return;
+  }
+  goToFormStep(fromStep + 1, DRAWER_FORM_CONFIG);
+}
+
+function prevDrawerStep(fromStep) {
+  goToFormStep(fromStep - 1, DRAWER_FORM_CONFIG);
+}
+
+function nextContactStep(fromStep) {
+  if (fromStep === 1) {
+    const val = document.getElementById('contact-input-property_type').value;
+    if (!val) return;
+  } else if (fromStep === 2) {
+    const val = document.getElementById('contact-input-security_concern').value;
+    if (!val) return;
+  }
+  goToFormStep(fromStep + 1, CONTACT_FORM_CONFIG);
+}
+
+function handleContactPrevStep(fromStep) {
+  goToFormStep(fromStep - 1, CONTACT_FORM_CONFIG);
+}
+
+function validateDrawerStep3() {
+  const nameVal = document.getElementById('drawer-name').value.trim();
+  const phoneVal = document.getElementById('drawer-phone').value.trim();
+  const submitBtn = document.getElementById('drawerSubmitBtn');
+  const nameErr = document.getElementById('drawer-name-error');
+  const phoneErr = document.getElementById('drawer-phone-error');
+
+  const isValidName = nameVal.length >= 2;
+  const isValidPhone = phoneVal.length >= 8;
+
+  if (nameErr) nameErr.style.display = (nameVal.length > 0 && !isValidName) ? 'block' : 'none';
+  if (phoneErr) phoneErr.style.display = (phoneVal.length > 0 && !isValidPhone) ? 'block' : 'none';
+
+  if (submitBtn) {
+    submitBtn.disabled = !(isValidName && isValidPhone);
+  }
+}
+
+function validateContactStep3() {
+  const nameVal = document.getElementById('contact-page-name').value.trim();
+  const phoneVal = document.getElementById('contact-page-phone').value.trim();
+  const submitBtn = document.getElementById('contactSubmitBtn');
+  const nameErr = document.getElementById('contact-name-error');
+  const phoneErr = document.getElementById('contact-phone-error');
+
+  const isValidName = nameVal.length >= 2;
+  const isValidPhone = phoneVal.length >= 8;
+
+  if (nameErr) nameErr.style.display = (nameVal.length > 0 && !isValidName) ? 'block' : 'none';
+  if (phoneErr) phoneErr.style.display = (phoneVal.length > 0 && !isValidPhone) ? 'block' : 'none';
+
+  if (submitBtn) {
+    submitBtn.disabled = !(isValidName && isValidPhone);
   }
 }
 
@@ -254,20 +363,12 @@ function handleStepSelection(element, fieldId, value, currentStep) {
   handleUnifiedStepSelection(element, fieldId, value, currentStep, DRAWER_FORM_CONFIG);
 }
 
-function prevDrawerStep(currentStep) {
-  goToFormStep(currentStep - 1, DRAWER_FORM_CONFIG);
-}
-
 function handleDrawerSubmit(event) {
   return handleUnifiedSubmit(event, DRAWER_FORM_CONFIG);
 }
 
 function handleContactStepSelection(element, fieldId, value, currentStep) {
   handleUnifiedStepSelection(element, fieldId, value, currentStep, CONTACT_FORM_CONFIG);
-}
-
-function handleContactPrevStep(currentStep) {
-  goToFormStep(currentStep - 1, CONTACT_FORM_CONFIG);
 }
 
 function handleContactPageSubmit(event) {
@@ -287,12 +388,17 @@ window.openServiceDrawer = openServiceDrawer;
 window.closeFormDrawer = closeFormDrawer;
 window.handleStepSelection = handleStepSelection;
 window.prevDrawerStep = prevDrawerStep;
+window.nextDrawerStep = nextDrawerStep;
+window.nextContactStep = nextContactStep;
 window.handleDrawerSubmit = handleDrawerSubmit;
 window.handleContactStepSelection = handleContactStepSelection;
 window.handleContactPrevStep = handleContactPrevStep;
 window.handleContactPageSubmit = handleContactPageSubmit;
 window.goToFormStep = goToFormStep;
 window.applyLeadTrackFilter = applyLeadTrackFilter;
+window.handleTileRadioChange = handleTileRadioChange;
+window.validateDrawerStep3 = validateDrawerStep3;
+window.validateContactStep3 = validateContactStep3;
 
 function initNavbar(){
   const navMenu = document.getElementById("nav-menu");

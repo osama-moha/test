@@ -7608,3 +7608,263 @@ h6{
     gap: 16px;
   }
 }
+
+/* =========================================================
+   Form Polish Pass: Service Drawer & Contact Form Layout
+   ========================================================= */
+
+#drawer .drawer-body {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.form-group-kicker {
+  font-family: var(--font-display, "Barlow Condensed", sans-serif);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111827;
+  border-left: 3px solid var(--red, #C4272E);
+  padding-left: 10px;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.form-field-group {
+  margin-bottom: 24px;
+}
+
+.form-section-gap {
+  margin-top: 32px;
+}
+
+.form-field-label {
+  display: block;
+  font-family: var(--font-primary, "Barlow", sans-serif);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.form-field-label .required-star {
+  color: var(--red, #C4272E);
+  margin-left: 2px;
+}
+
+.form-field-input {
+  width: 100%;
+  min-height: 52px;
+  background-color: #FFFFFF;
+  border: 1px solid #D9DEE8;
+  border-radius: 4px;
+  padding: 14px 16px;
+  font-family: var(--font-primary, "Barlow", sans-serif);
+  font-weight: 400;
+  font-size: 16px;
+  color: #111827;
+  box-sizing: border-box;
+  transition: border-color var(--motion-fast, 0.15s) var(--ease-standard, ease), box-shadow var(--motion-fast, 0.15s) var(--ease-standard, ease);
+}
+
+.form-field-input:focus,
+.form-field-input:focus-visible {
+  outline: none;
+  border-color: var(--deep-navy, #0D1430);
+  box-shadow: 0 0 0 3px rgba(13, 20, 48, 0.2);
+}
+
+.form-field-input.has-error {
+  border-color: var(--red, #C4272E);
+}
+
+.field-error-message {
+  display: block;
+  font-family: var(--font-primary, "Barlow", sans-serif);
+  font-size: 13px;
+  color: var(--red, #C4272E);
+  margin-top: 6px;
+}
+
+.required-note {
+  font-size: 12.5px;
+  color: #5B6472;
+  margin-top: 14px;
+  margin-bottom: 0;
+}
+
+/* Step Indicator */
+.step-indicator-wrapper {
+  margin-bottom: 24px;
+}
+
+.step-indicator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.step-indicator-count {
+  font-family: var(--font-primary, "Barlow", sans-serif);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.step-indicator-title {
+  font-family: var(--font-primary, "Barlow", sans-serif);
+  font-weight: 600;
+  font-size: 13px;
+  color: #5B6472;
+}
+
+.step-segmented-bar {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  height: 3px;
+}
+
+.step-segment {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #D9DEE8;
+  transition: background-color var(--motion-fast, 0.2s) var(--ease-standard, ease);
+}
+
+.step-segment.completed,
+.step-segment.active {
+  background-color: var(--red, #C4272E);
+}
+
+/* Selection Tile Grid (Step 1) */
+.selection-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 480px) {
+  .selection-tile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.selection-tile-label {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border: 1px solid #D9DEE8;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition: border-color var(--motion-fast, 0.15s) var(--ease-standard, ease);
+  box-sizing: border-box;
+}
+
+/* Screen reader radio input */
+.selection-tile-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .selection-tile-label:hover {
+    border-color: var(--deep-navy, #0D1430);
+  }
+}
+
+/* Keyboard focus state */
+.selection-tile-input:focus-visible + .selection-tile-content {
+  outline: 2px solid var(--deep-navy, #0D1430);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Checked Tile State */
+.selection-tile-input:checked + .selection-tile-content {
+  border-left: 3px solid var(--red, #C4272E);
+  background-color: rgba(196, 39, 46, 0.05);
+}
+
+.selection-tile-content {
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid transparent;
+  padding: 16px;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--motion-fast, 0.15s) var(--ease-standard, ease), background-color var(--motion-fast, 0.15s) var(--ease-standard, ease);
+}
+
+.tile-title {
+  font-family: var(--font-display, "Barlow Condensed", sans-serif);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #111827;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.tile-desc {
+  font-family: var(--font-primary, "Barlow", sans-serif);
+  font-weight: 400;
+  font-size: 13px;
+  color: #5B6472;
+  line-height: 1.4;
+}
+
+/* Disabled State for Action Buttons */
+.btn:disabled,
+.btn[disabled],
+.btn.btn-disabled {
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+/* Quiet Help Line below submit */
+.quiet-help-line {
+  margin-top: 16px;
+  margin-bottom: 0;
+  font-family: var(--font-primary, "Barlow", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  color: #5B6472;
+  text-align: center;
+}
+
+.quiet-help-line a {
+  color: var(--deep-navy, #0D1430);
+  text-decoration: underline;
+}
+
+.quiet-help-line a:hover {
+  color: var(--red, #C4272E);
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  .form-field-input,
+  .step-segment,
+  .selection-tile-label,
+  .selection-tile-content {
+    transition: none !important;
+  }
+}
+

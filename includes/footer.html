@@ -117,74 +117,170 @@
 <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeFormDrawer()" aria-hidden="true"></div>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-describedby="drawerIntro">
   
-  <div class="drawer-progress-container" style="width:100%; height:6px; background:#EEF2F7; position:relative;">
-    <div id="drawerProgressBar" style="width:33.3%; height:100%; background:#C4272E; transition:width 0.25s ease;"></div>
+  <!-- Step Indicator Bar -->
+  <div class="step-indicator-wrapper" style="padding: 20px 24px 0;">
+    <div class="step-indicator-header">
+      <span class="step-indicator-count" id="drawerStepCount">STEP 1 / 3</span>
+      <span class="step-indicator-title" id="drawerStepTitle">01 Site Details</span>
+    </div>
+    <div class="step-segmented-bar">
+      <div class="step-segment active" id="drawerSeg1"></div>
+      <div class="step-segment" id="drawerSeg2"></div>
+      <div class="step-segment" id="drawerSeg3"></div>
+    </div>
   </div>
 
-  <div class="drawer-header" style="padding: 20px 24px 14px;">
-    <h3 id="drawerTitle">Request a Security Recommendation</h3>
+  <div class="drawer-header" style="padding: 14px 24px 10px;">
+    <h3 id="drawerTitle" style="font-family:var(--font-display, 'Barlow Condensed', sans-serif); font-size:24px; font-weight:800; color:#111827; margin:0;">Request a Security Recommendation</h3>
     <button class="drawer-close" onclick="closeFormDrawer()" aria-label="Close" type="button" style="top:14px;">&times;</button>
   </div>
 
   <div class="drawer-body" style="padding: 0 24px 24px;">
-    <p class="drawer-intro" id="drawerIntro" style="font-size:14px; margin:0 0 20px; color:#5B6472;">Share a few details and Urban Eye will advise on the right next step.</p>
+    <p class="drawer-intro" id="drawerIntro" style="font-size:14px; margin:0 0 24px; color:#5B6472; line-height:1.5;">Share a few details and Urban Eye will advise on the right next step.</p>
 
     <form id="conversational-drawer-form" action="https://formspree.io/f/xkoegypv" method="POST" onsubmit="return handleDrawerSubmit(event)">
       <input type="hidden" name="_subject" value="New Conversational Protection Assessment Request">
       <input type="hidden" name="page_source" id="drawerPageSource" value="">
       <input type="hidden" name="service_interest" id="drawerServiceInterest" value="">
 
-      <!-- Screen 1: The Situation -->
+      <!-- Step 1: Site Details -->
       <div class="form-step active" data-step="1">
-        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What are we securing?</h4>
-        <div style="display:grid; gap:2px;">
-          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'property_type', 'Private Residence', 1)">Private Residence</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Retail Shop', 1)">Retail Shop</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Office / Corporate', 1)">Office / Corporate</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Warehouse & Logistics', 1)">Warehouse & Logistics</button>
-          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'property_type', 'Airbnb / Short-Stay', 1)">Airbnb / Short-Stay</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'property_type', 'Construction Site', 1)">Construction Site</button>
+        <h4 class="form-group-kicker">SITE DETAILS</h4>
+        <p style="color:#111827; font-size:15px; font-weight:600; margin:0 0 14px;">What type of property are we securing?</p>
+        
+        <div class="selection-tile-grid">
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_property_type_radio" value="Private Residence" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 1)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Private Residence</span>
+              <span class="tile-desc">Homes, townhouses &amp; apartments</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_property_type_radio" value="Retail Shop" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Retail Shop</span>
+              <span class="tile-desc">Storefronts, boutiques &amp; cash points</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_property_type_radio" value="Office / Corporate" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Office / Corporate</span>
+              <span class="tile-desc">Commercial suites, clinics &amp; agencies</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_property_type_radio" value="Warehouse &amp; Logistics" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Warehouse &amp; Logistics</span>
+              <span class="tile-desc">Stockrooms, loading bays &amp; yards</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_property_type_radio" value="Airbnb / Short-Stay" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 1)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Airbnb / Short-Stay</span>
+              <span class="tile-desc">Vacation rentals &amp; guest suites</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_property_type_radio" value="Construction Site" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Construction Site</span>
+              <span class="tile-desc">Active builds, materials &amp; perimeter</span>
+            </div>
+          </label>
         </div>
         <input type="hidden" name="property_type" id="drawer-input-property_type" required>
+        
+        <div style="margin-top:24px;">
+          <button type="button" class="btn btn-primary btn-block drawer-next-btn" id="drawerStep1Next" disabled onclick="nextDrawerStep(1)">Continue &rarr;</button>
+        </div>
       </div>
 
-      <!-- Screen 2: The Core Problem -->
+      <!-- Step 2: Requirements / Concerns -->
       <div class="form-step" data-step="2">
         <button type="button" class="back-step-btn" onclick="prevDrawerStep(2)">&larr; Back to previous step</button>
-        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 16px;">What's your main concern?</h4>
-        <div style="display:grid; gap:2px;">
-          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'security_concern', 'Stopping night break-ins', 2)">Stopping night break-ins</button>
-          <button type="button" class="option-button" data-track="private" onclick="handleStepSelection(this, 'security_concern', 'Keeping the property secure while we\'re away', 2)">Keeping the property secure while we're away</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'security_concern', 'Monitoring staff, visitors, or stock', 2)">Monitoring staff, visitors, or stock</button>
-          <button type="button" class="option-button" data-track="enterprise" onclick="handleStepSelection(this, 'security_concern', 'Stopping break-ins or theft', 2)">Stopping break-ins or theft</button>
-          <button type="button" class="option-button" data-track="both" onclick="handleStepSelection(this, 'security_concern', 'Upgrading an old, blind alarm system', 2)">Upgrading an old, blind alarm system</button>
-          <button type="button" class="option-button" data-track="both" onclick="handleStepSelection(this, 'security_concern', 'I just want a professional baseline review', 2)">I just want a professional baseline review</button>
+        <h4 class="form-group-kicker">SECURITY CONCERNS</h4>
+        <p style="color:#111827; font-size:15px; font-weight:600; margin:0 0 14px;">What is your primary security objective?</p>
+
+        <div style="display:grid; gap:10px;">
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_security_concern_radio" value="Stopping night break-ins" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 2)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Stopping Night Break-Ins</span>
+              <span class="tile-desc">Perimeter detection &amp; instant alert routing</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_security_concern_radio" value="Keeping the property secure while we're away" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 2)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Vacant Property Protection</span>
+              <span class="tile-desc">Remote app status &amp; 24/7 PRO monitoring</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_security_concern_radio" value="Monitoring staff, visitors, or stock" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 2)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Staff, Visitor &amp; Stock Monitoring</span>
+              <span class="tile-desc">Access control logs &amp; visual verification</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_security_concern_radio" value="Stopping break-ins or theft" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 2)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Commercial Loss Prevention</span>
+              <span class="tile-desc">Storefront, stockroom &amp; bay security</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_security_concern_radio" value="Upgrading an old, blind alarm system" class="selection-tile-input" data-track="both" onchange="handleTileRadioChange(this, 'drawer', 2)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Upgrading Legacy System</span>
+              <span class="tile-desc">Replace unmonitored sirens with smart verified alerts</span>
+            </div>
+          </label>
+          <label class="selection-tile-label">
+            <input type="radio" name="drawer_security_concern_radio" value="I just want a professional baseline review" class="selection-tile-input" data-track="both" onchange="handleTileRadioChange(this, 'drawer', 2)">
+            <div class="selection-tile-content">
+              <span class="tile-title">Baseline Risk Audit</span>
+              <span class="tile-desc">Documented site vulnerabilities &amp; priority actions</span>
+            </div>
+          </label>
         </div>
         <input type="hidden" name="security_concern" id="drawer-input-security_concern" required>
+
+        <div style="margin-top:24px;">
+          <button type="button" class="btn btn-primary btn-block drawer-next-btn" id="drawerStep2Next" disabled onclick="nextDrawerStep(2)">Continue &rarr;</button>
+        </div>
       </div>
 
-      <!-- Screen 3: The Lead Capture -->
+      <!-- Step 3: Contact Details -->
       <div class="form-step" data-step="3">
         <button type="button" class="back-step-btn" onclick="prevDrawerStep(3)">&larr; Back to previous step</button>
-        <h4 style="color:#0D1430; font-size:16px; font-weight:700; margin:0 0 6px;">Request your on-site review.</h4>
-        <p style="font-size:13.5px; color:#5B6472; margin:0 0 18px; line-height:1.45;">Enter your details below. An Urban Eye consultant will contact you on WhatsApp to review your answers and schedule the site survey.</p>
+        <h4 class="form-group-kicker">CONTACT DETAILS</h4>
+        <p style="font-size:14px; color:#5B6472; margin:0 0 20px; line-height:1.5;">Share your contact details below. An Urban Eye consultant will review your selections and respond on WhatsApp with your tailored proposal.</p>
         
-        <div style="display:grid; gap:14px; margin-bottom:20px;">
-          <div>
-            <label for="drawer-name" style="font-size:13px; font-weight:700; color:#0D1430; display:block; margin-bottom:6px;">First Name</label>
-            <input id="drawer-name" name="name" placeholder="Your name" style="width:100%; min-height:46px; padding:10px 14px; border:1px solid #D9DEE8; border-radius:4px;" required>
-          </div>
-          <div>
-            <label for="drawer-phone" style="font-size:13px; font-weight:700; color:#0D1430; display:block; margin-bottom:6px;">WhatsApp Number</label>
-            <input id="drawer-phone" name="phone" inputmode="tel" placeholder="e.g. 0768055555" style="width:100%; min-height:46px; padding:10px 14px; border:1px solid #D9DEE8; border-radius:4px;" required>
-          </div>
+        <div class="form-field-group">
+          <label for="drawer-name" class="form-field-label">Full Name <span class="required-star">*</span></label>
+          <input id="drawer-name" name="name" class="form-field-input" placeholder="e.g. David Ochieng" required oninput="validateDrawerStep3()">
+          <span class="field-error-message" id="drawer-name-error" style="display:none;">Please enter your full name.</span>
+        </div>
+
+        <div class="form-field-group">
+          <label for="drawer-phone" class="form-field-label">WhatsApp Number <span class="required-star">*</span></label>
+          <input id="drawer-phone" name="phone" inputmode="tel" class="form-field-input" placeholder="e.g. 0768055555" required oninput="validateDrawerStep3()">
+          <span class="field-error-message" id="drawer-phone-error" style="display:none;">Please enter a valid phone number.</span>
         </div>
 
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-        <button class="btn btn-primary btn-block" type="submit" style="min-height:48px; width:100%; justify-content:center;">Book My On-Site Review via WhatsApp</button>
+        <button class="btn btn-primary btn-block" type="submit" id="drawerSubmitBtn" disabled style="min-height:52px; width:100%; justify-content:center;">Book My On-Site Review via WhatsApp</button>
 
-        <p style="font-size:12px; color:#5B6472; margin:12px 0 0; line-height:1.5;">Your details are used only to respond to this request. See our <a href="/privacy-policy/" style="color:#1B2C6E; text-decoration:underline;">Privacy Policy</a>.</p>
+        <p class="quiet-help-line">Prefer to talk first? <a href="https://wa.me/254768055555">Chat on WhatsApp</a></p>
+        <p class="required-note">(* Required fields)</p>
+        <p style="font-size:12px; color:#5B6472; margin:12px 0 0; line-height:1.5;">Your details are used only to respond to this request. See our <a href="/privacy-policy/" style="color:#0D1430; text-decoration:underline;">Privacy Policy</a>.</p>
       </div>
     </form>
   </div>
