@@ -149,42 +149,42 @@
         <p style="color:#111827; font-size:15px; font-weight:600; margin:0 0 14px;">What type of property are we securing?</p>
         
         <div class="selection-tile-grid">
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-tile-category="private">
             <input type="radio" name="drawer_property_type_radio" value="Private Residence" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 1)">
             <div class="selection-tile-content">
               <span class="tile-title">Private Residence</span>
               <span class="tile-desc">Homes, townhouses &amp; apartments</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-tile-category="commercial">
             <input type="radio" name="drawer_property_type_radio" value="Retail Shop" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
             <div class="selection-tile-content">
               <span class="tile-title">Retail Shop</span>
               <span class="tile-desc">Storefronts, boutiques &amp; cash points</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-tile-category="commercial">
             <input type="radio" name="drawer_property_type_radio" value="Office / Corporate" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
             <div class="selection-tile-content">
               <span class="tile-title">Office / Corporate</span>
               <span class="tile-desc">Commercial suites, clinics &amp; agencies</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-tile-category="commercial">
             <input type="radio" name="drawer_property_type_radio" value="Warehouse &amp; Logistics" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
             <div class="selection-tile-content">
               <span class="tile-title">Warehouse &amp; Logistics</span>
               <span class="tile-desc">Stockrooms, loading bays &amp; yards</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-tile-category="private">
             <input type="radio" name="drawer_property_type_radio" value="Airbnb / Short-Stay" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 1)">
             <div class="selection-tile-content">
               <span class="tile-title">Airbnb / Short-Stay</span>
               <span class="tile-desc">Vacation rentals &amp; guest suites</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-tile-category="commercial">
             <input type="radio" name="drawer_property_type_radio" value="Construction Site" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 1)">
             <div class="selection-tile-content">
               <span class="tile-title">Construction Site</span>
@@ -193,6 +193,12 @@
           </label>
         </div>
         <input type="hidden" name="property_type" id="drawer-input-property_type" required>
+
+        <div class="form-field-group" style="margin-top:20px;">
+          <label for="drawer-location" class="form-field-label">Location / Neighbourhood <span class="required-star">*</span></label>
+          <input id="drawer-location" name="location" class="form-field-input" placeholder="Area or neighbourhood, e.g. Industrial Area" required oninput="validateDrawerStep1()">
+          <span class="field-error-message" id="drawer-location-error" style="display:none;">Please enter your area or neighbourhood.</span>
+        </div>
         
         <div style="margin-top:24px;">
           <button type="button" class="btn btn-primary btn-block drawer-next-btn" id="drawerStep1Next" disabled onclick="nextDrawerStep(1)">Continue &rarr;</button>
@@ -206,42 +212,42 @@
         <p style="color:#111827; font-size:15px; font-weight:600; margin:0 0 14px;">What is your primary security objective?</p>
 
         <div style="display:grid; gap:10px;">
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-concern-scope="residential">
             <input type="radio" name="drawer_security_concern_radio" value="Stopping night break-ins" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 2)">
             <div class="selection-tile-content">
               <span class="tile-title">Stopping Night Break-Ins</span>
               <span class="tile-desc">Perimeter detection &amp; instant alert routing</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-concern-scope="residential">
             <input type="radio" name="drawer_security_concern_radio" value="Keeping the property secure while we're away" class="selection-tile-input" data-track="private" onchange="handleTileRadioChange(this, 'drawer', 2)">
             <div class="selection-tile-content">
               <span class="tile-title">Vacant Property Protection</span>
               <span class="tile-desc">Remote app status &amp; 24/7 PRO monitoring</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-concern-scope="commercial">
             <input type="radio" name="drawer_security_concern_radio" value="Monitoring staff, visitors, or stock" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 2)">
             <div class="selection-tile-content">
               <span class="tile-title">Staff, Visitor &amp; Stock Monitoring</span>
               <span class="tile-desc">Access control logs &amp; visual verification</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-concern-scope="commercial">
             <input type="radio" name="drawer_security_concern_radio" value="Stopping break-ins or theft" class="selection-tile-input" data-track="enterprise" onchange="handleTileRadioChange(this, 'drawer', 2)">
             <div class="selection-tile-content">
               <span class="tile-title">Commercial Loss Prevention</span>
               <span class="tile-desc">Storefront, stockroom &amp; bay security</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-concern-scope="both">
             <input type="radio" name="drawer_security_concern_radio" value="Upgrading an old, blind alarm system" class="selection-tile-input" data-track="both" onchange="handleTileRadioChange(this, 'drawer', 2)">
             <div class="selection-tile-content">
               <span class="tile-title">Upgrading Legacy System</span>
               <span class="tile-desc">Replace unmonitored sirens with smart verified alerts</span>
             </div>
           </label>
-          <label class="selection-tile-label">
+          <label class="selection-tile-label" data-concern-scope="both">
             <input type="radio" name="drawer_security_concern_radio" value="I just want a professional baseline review" class="selection-tile-input" data-track="both" onchange="handleTileRadioChange(this, 'drawer', 2)">
             <div class="selection-tile-content">
               <span class="tile-title">Baseline Risk Audit</span>
@@ -250,6 +256,54 @@
           </label>
         </div>
         <input type="hidden" name="security_concern" id="drawer-input-security_concern" required>
+
+        <!-- Variant Extra: Equipment Variant -->
+        <div id="drawer-equipment-extras" style="display:none; margin-top:20px;">
+          <div class="form-field-group">
+            <label for="drawer-installation-status" class="form-field-label">System Status <span class="required-star">*</span></label>
+            <select id="drawer-installation-status" name="installation_status" class="form-field-input" onchange="validateDrawerStep2()">
+              <option value="">Select system status...</option>
+              <option value="New installation">New installation required</option>
+              <option value="Upgrading existing system">Upgrading / expanding existing system</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Variant Extra: Operations & Guarding Variant -->
+        <div id="drawer-operations-extras" style="display:none; margin-top:20px;">
+          <div class="form-field-group">
+            <label for="drawer-operations-timeframe" class="form-field-label">Decision Timeframe <span class="required-star">*</span></label>
+            <select id="drawer-operations-timeframe" name="decision_timeframe" class="form-field-input" onchange="validateDrawerStep2()">
+              <option value="">Select timeframe...</option>
+              <option value="This month">This month</option>
+              <option value="This quarter">This quarter</option>
+              <option value="Exploring">Exploring / Budgeting</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Variant Extra: Corporate Risk Audit Variant -->
+        <div id="drawer-corporate-extras" style="display:none; margin-top:20px;">
+          <div class="form-field-group">
+            <label for="drawer-site-scale" class="form-field-label">Approximate Site Scale <span class="required-star">*</span></label>
+            <select id="drawer-site-scale" name="site_scale" class="form-field-input" onchange="validateDrawerStep2()">
+              <option value="">Select site scale...</option>
+              <option value="Under 500 sqm">Under 500 sqm (Single floor / suite)</option>
+              <option value="500 - 2,000 sqm">500 – 2,000 sqm (Full building / medium site)</option>
+              <option value="Over 2,000 sqm">Over 2,000 sqm (Large facility / compound)</option>
+              <option value="Multi-building / Yard">Multi-building estate / construction yard</option>
+            </select>
+          </div>
+          <div class="form-field-group">
+            <label for="drawer-corporate-timeframe" class="form-field-label">Decision Timeframe <span class="required-star">*</span></label>
+            <select id="drawer-corporate-timeframe" name="decision_timeframe" class="form-field-input" onchange="validateDrawerStep2()">
+              <option value="">Select timeframe...</option>
+              <option value="This month">This month</option>
+              <option value="This quarter">This quarter</option>
+              <option value="Exploring">Exploring / Budgeting</option>
+            </select>
+          </div>
+        </div>
 
         <div style="margin-top:24px;">
           <button type="button" class="btn btn-primary btn-block drawer-next-btn" id="drawerStep2Next" disabled onclick="nextDrawerStep(2)">Continue &rarr;</button>
@@ -262,6 +316,13 @@
         <h4 class="form-group-kicker">CONTACT DETAILS</h4>
         <p style="font-size:14px; color:#5B6472; margin:0 0 20px; line-height:1.5;">Share your contact details below. An Urban Eye consultant will review your selections and respond on WhatsApp with your tailored proposal.</p>
         
+        <!-- Corporate Audit Extra: Company Name -->
+        <div id="drawer-company-group" class="form-field-group" style="display:none;">
+          <label for="drawer-company" class="form-field-label">Company / Organization Name <span class="required-star">*</span></label>
+          <input id="drawer-company" name="company_name" class="form-field-input" placeholder="e.g. Acme Logistics Kenya" oninput="validateDrawerStep3()">
+          <span class="field-error-message" id="drawer-company-error" style="display:none;">Please enter your company or organization name.</span>
+        </div>
+
         <div class="form-field-group">
           <label for="drawer-name" class="form-field-label">Full Name <span class="required-star">*</span></label>
           <input id="drawer-name" name="name" class="form-field-input" placeholder="e.g. David Ochieng" required oninput="validateDrawerStep3()">

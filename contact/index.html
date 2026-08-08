@@ -271,6 +271,12 @@
             </div>
             <input type="hidden" name="property_type" id="contact-input-property_type" required>
 
+            <div class="form-field-group" style="margin-top:20px;">
+              <label for="contact-location" class="form-field-label">Location / Neighbourhood <span class="required-star">*</span></label>
+              <input id="contact-location" name="location" class="form-field-input" placeholder="Area or neighbourhood, e.g. Industrial Area" required oninput="validateContactStep1()">
+              <span class="field-error-message" id="contact-location-error" style="display:none;">Please enter your area or neighbourhood.</span>
+            </div>
+
             <div style="margin-top:24px;">
               <button type="button" class="btn btn-primary btn-block" id="contactStep1Next" disabled onclick="nextContactStep(1)">Continue &rarr;</button>
             </div>
