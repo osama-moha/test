@@ -5359,7 +5359,7 @@ a.nav-serve-monitoring:hover strong{
   font-size:clamp(34px,4vw,56px);
   line-height:1.05;
   letter-spacing:-.055em;
-  font-weight:650;
+  font-weight:600;
 }
 
 .packages-read-inner p{
@@ -6313,7 +6313,7 @@ a.nav-serve-monitoring:hover strong{
   font-size:clamp(36px,4vw,58px);
   line-height:1.05;
   letter-spacing:-.055em;
-  font-weight:650;
+  font-weight:600;
 }
 
 .packages-monitoring-inner p{
@@ -6685,7 +6685,7 @@ a.nav-serve-monitoring:hover strong{
   font-size:22px;
   line-height:1.15;
   letter-spacing:0;
-  font-weight:750;
+  font-weight:700;
 }
 
 .security-feature-row p{
@@ -7868,3 +7868,13 @@ h6{
   }
 }
 
+
+
+/* Drawer Title Class */
+.drawer-title-heading {
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
