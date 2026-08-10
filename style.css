@@ -1602,6 +1602,21 @@ details p{
   margin:0;
 }
 
+.cta-quiet-note{
+  margin:6px 0 0;
+  font-size:14px;
+  color:rgba(255,255,255,.7);
+}
+
+.cta-quiet-note a{
+  color:rgba(255,255,255,.85);
+  text-decoration:underline;
+}
+
+.cta-quiet-note a:hover{
+  color:#fff;
+}
+
 /* ===============================
    Footer
 ================================ */
