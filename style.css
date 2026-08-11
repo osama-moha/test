@@ -6071,16 +6071,36 @@ a.nav-serve-monitoring:hover strong{
   padding:12px 0;
 }
 
+ol.breadcrumb-list,
+ul.breadcrumb-list,
 .breadcrumb-list{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:0;
-  font-size:13px;
-  color:var(--muted);
+  list-style:none !important;
+  list-style-type:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  gap:0 !important;
+  font-size:13px !important;
+  color:var(--muted) !important;
+}
+
+ol.breadcrumb-list li,
+ul.breadcrumb-list li,
+.breadcrumb-list li{
+  display:inline-flex !important;
+  align-items:center !important;
+  list-style:none !important;
+  list-style-type:none !important;
+}
+
+ol.breadcrumb-list li::marker,
+ul.breadcrumb-list li::marker,
+.breadcrumb-list li::marker{
+  content:"" !important;
+  display:none !important;
 }
 
 .breadcrumb-list li{
@@ -7907,4 +7927,237 @@ h6{
 .risk-panel h3 {
   font-family: var(--font-primary, 'Barlow', sans-serif);
   font-weight: 600;
+}
+
+/* ===============================
+   Dedicated Service Drawers
+   (Review + Corporate Audit)
+================================ */
+
+/* Service badge used in both drawers */
+.service-drawer-badge {
+  display: inline-block;
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-left: 10px;
+  position: relative;
+  top: -2px;
+}
+
+/* ---- Review Drawer ---- */
+#reviewDrawer {
+  border-top: 4px solid var(--red);
+}
+
+#reviewDrawer .service-drawer-badge {
+  background: rgba(196, 39, 46, 0.08);
+  color: var(--red);
+  border: 1px solid rgba(196, 39, 46, 0.18);
+}
+
+#reviewDrawer .drawer-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+#reviewDrawer .svc-drawer-title {
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+#reviewDrawer .svc-drawer-context {
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 8px 0 0;
+  max-width: 400px;
+}
+
+/* ---- Audit Drawer ---- */
+#auditDrawer {
+  border-top: none;
+}
+
+#auditDrawer .audit-drawer-band {
+  background: var(--deep-navy);
+  padding: 24px 28px 20px;
+}
+
+#auditDrawer .audit-drawer-band .svc-drawer-title {
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+#auditDrawer .audit-drawer-band .service-drawer-badge {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#auditDrawer .audit-drawer-band .svc-drawer-context {
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+
+#auditDrawer .drawer-header {
+  border-bottom: none;
+  padding: 0;
+}
+
+#auditDrawer .drawer-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+#auditDrawer .drawer-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Shared field group spacing for both drawers */
+.svc-drawer-fields .form-field-group {
+  margin-bottom: 18px;
+}
+
+.svc-drawer-fields .form-field-group:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Two-column grid for shorter fields (name + phone) */
+.svc-drawer-contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 480px) {
+  .svc-drawer-contact-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .svc-drawer-contact-row .form-field-group {
+    margin-bottom: 18px;
+  }
+}
+
+/* Section divider inside drawer */
+.svc-drawer-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 22px 0;
+}
+
+/* Drawer submit area */
+.svc-drawer-submit {
+  margin-top: 26px;
+}
+
+.svc-drawer-submit .btn {
+  width: 100%;
+  min-height: 52px;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Audit drawer field kicker */
+.svc-field-kicker {
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+/* Fee credit note in audit drawer */
+.svc-drawer-fee-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(196, 39, 46, 0.04);
+  border: 1px solid rgba(196, 39, 46, 0.12);
+  border-radius: 3px;
+  padding: 12px 14px;
+  margin-bottom: 22px;
+}
+
+.svc-drawer-fee-note svg {
+  flex: 0 0 16px;
+  margin-top: 1px;
+  color: var(--red);
+}
+
+/* Architectural Audit Commercial Strip */
+.audit-commercial-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  margin: 28px 0 32px;
+  max-width: 820px;
+  overflow: hidden;
+}
+
+.audit-strip-col {
+  background: rgba(13, 20, 48, 0.7);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.audit-strip-label {
+  font-family: var(--font-primary, 'Barlow', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 4px;
+}
+
+.audit-strip-value {
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.audit-strip-value--highlight {
+  color: #FF5A60;
+}
+
+@media (max-width: 640px) {
+  .audit-commercial-strip {
+    grid-template-columns: 1fr;
+  }
 }
