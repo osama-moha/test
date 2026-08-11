@@ -4,6 +4,15 @@
   <url>
     <loc>https://urbaneyesecurity.co.ke/</loc>
   </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/about/</loc>
+  </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/contact/</loc>
+  </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/careers/</loc>
+  </url>
 
   <!-- Main Services -->
   <url>
@@ -11,6 +20,18 @@
   </url>
   <url>
     <loc>https://urbaneyesecurity.co.ke/cctv-installation/</loc>
+  </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/access-control/</loc>
+  </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/electric-fencing/</loc>
+  </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/manned-guarding/</loc>
+  </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/commercial-fire-alarm-systems/</loc>
   </url>
   <url>
     <loc>https://urbaneyesecurity.co.ke/professional-monitoring/</loc>
@@ -22,9 +43,6 @@
     <loc>https://urbaneyesecurity.co.ke/corporate-risk-audit/</loc>
   </url>
   <url>
-    <loc>https://urbaneyesecurity.co.ke/partners/</loc>
-  </url>
-  <url>
     <loc>https://urbaneyesecurity.co.ke/vault-protection/</loc>
   </url>
   <url>
@@ -32,6 +50,9 @@
   </url>
   <url>
     <loc>https://urbaneyesecurity.co.ke/security-packages/</loc>
+  </url>
+  <url>
+    <loc>https://urbaneyesecurity.co.ke/partners/</loc>
   </url>
   <url>
     <loc>https://urbaneyesecurity.co.ke/programs/</loc>
