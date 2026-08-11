@@ -66,7 +66,7 @@
   .drawer-backdrop {
     z-index: 2000 !important;
   }
-  #drawer {
+  .drawer {
     z-index: 2001 !important;
   }
   #drawer .form-step {
@@ -343,6 +343,189 @@
         <p class="required-note">(* Required fields)</p>
         <p style="font-size:12px; color:#5B6472; margin:12px 0 0; line-height:1.5;">Your details are used only to respond to this request. See our <a href="/privacy-policy/" style="color:#0D1430; text-decoration:underline;">Privacy Policy</a>.</p>
       </div>
+    </form>
+  </div>
+</aside>
+
+<!-- ================================
+     Site Security Review Drawer
+================================ -->
+<div class="drawer-backdrop" id="reviewDrawerBackdrop" onclick="closeReviewDrawer()" aria-hidden="true"></div>
+<aside class="drawer" id="reviewDrawer" role="dialog" aria-modal="true" aria-labelledby="reviewDrawerTitle">
+
+  <div class="drawer-header" style="padding: 24px 28px 0;">
+    <div>
+      <h3 class="svc-drawer-title" id="reviewDrawerTitle">
+        Site Security Review
+        <span class="service-drawer-badge">Complimentary</span>
+      </h3>
+      <p class="svc-drawer-context">Share a few details and we'll schedule a site walkthrough for your property.</p>
+    </div>
+    <button class="drawer-close" onclick="closeReviewDrawer()" aria-label="Close" type="button" style="align-self:flex-start;">&times;</button>
+  </div>
+
+  <div class="drawer-body" style="padding: 24px 28px 28px;">
+    <form id="review-drawer-form" action="https://formspree.io/f/xkoegypv" method="POST" onsubmit="return handleReviewSubmit(event)">
+      <input type="hidden" name="_subject" value="Site Security Review Request">
+      <input type="hidden" name="page_source" id="reviewPageSource" value="risk-review">
+      <input type="hidden" name="service_interest" id="reviewServiceInterest" value="Site Security Review">
+
+      <div class="svc-drawer-fields">
+        <div class="form-field-group">
+          <label for="review-property-type" class="form-field-label">Property type <span class="required-star">*</span></label>
+          <select id="review-property-type" name="property_type" class="form-field-input" required onchange="validateReviewForm()">
+            <option value="">Select property type…</option>
+            <option value="Private Residence">Private Residence</option>
+            <option value="Apartment / Estate">Apartment / Estate</option>
+            <option value="Retail Shop">Retail Shop</option>
+            <option value="Office / Commercial">Office / Commercial</option>
+            <option value="Warehouse / Logistics">Warehouse / Logistics</option>
+            <option value="Construction Site">Construction Site</option>
+            <option value="Airbnb / Short-Stay">Airbnb / Short-Stay</option>
+          </select>
+        </div>
+
+        <div class="form-field-group">
+          <label for="review-location" class="form-field-label">Location / Neighbourhood <span class="required-star">*</span></label>
+          <input id="review-location" name="location" class="form-field-input" placeholder="e.g. Kilimani, Westlands" required oninput="validateReviewForm()">
+        </div>
+
+        <div class="form-field-group">
+          <label for="review-main-concern" class="form-field-label">What is your main concern?</label>
+          <input id="review-main-concern" name="main_concern" class="form-field-input" placeholder="e.g. night break-ins, unverified visitors, staff theft" oninput="validateReviewForm()">
+        </div>
+
+        <hr class="svc-drawer-divider">
+
+        <div class="svc-drawer-contact-row">
+          <div class="form-field-group">
+            <label for="review-name" class="form-field-label">Full name <span class="required-star">*</span></label>
+            <input id="review-name" name="name" class="form-field-input" placeholder="e.g. David Ochieng" required oninput="validateReviewForm()">
+          </div>
+
+          <div class="form-field-group">
+            <label for="review-phone" class="form-field-label">WhatsApp number <span class="required-star">*</span></label>
+            <input id="review-phone" name="phone" inputmode="tel" class="form-field-input" placeholder="e.g. 0768 055 555" required oninput="validateReviewForm()">
+          </div>
+        </div>
+      </div>
+
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="svc-drawer-submit">
+        <button class="btn btn-primary" type="submit" id="reviewSubmitBtn" disabled>Book My Site Review via WhatsApp</button>
+      </div>
+
+      <p class="quiet-help-line">Prefer to talk first? <a href="https://wa.me/254768055555">Chat on WhatsApp</a></p>
+      <p style="font-size:12px; color:#5B6472; margin:14px 0 0; line-height:1.5;">Your details are used only to respond to this request. See our <a href="/privacy-policy/" style="color:#0D1430; text-decoration:underline;">Privacy Policy</a>.</p>
+    </form>
+  </div>
+</aside>
+
+<!-- ================================
+     Corporate Risk Audit Drawer
+================================ -->
+<div class="drawer-backdrop" id="auditDrawerBackdrop" onclick="closeAuditDrawer()" aria-hidden="true"></div>
+<aside class="drawer" id="auditDrawer" role="dialog" aria-modal="true" aria-labelledby="auditDrawerTitle">
+
+  <div class="audit-drawer-band">
+    <h3 class="svc-drawer-title" id="auditDrawerTitle">
+      Corporate Risk Audit
+      <span class="service-drawer-badge">Paid Assessment</span>
+    </h3>
+    <p class="svc-drawer-context">Fee quoted by site scope. Credited in full against implementation.</p>
+    <button class="drawer-close" onclick="closeAuditDrawer()" aria-label="Close" type="button">&times;</button>
+  </div>
+
+  <div class="drawer-header"></div>
+
+  <div class="drawer-body" style="padding: 24px 28px 28px;">
+
+    <div class="svc-drawer-fee-note">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm.5 11h-1V7h1v5zm0-6.5h-1v-1h1v1z" fill="currentColor"/>
+      </svg>
+      <span>The audit fee is confirmed in writing before scheduling, and credited in full if you proceed to an Urban Eye implementation engagement.</span>
+    </div>
+
+    <form id="audit-drawer-form" action="https://formspree.io/f/xkoegypv" method="POST" onsubmit="return handleAuditSubmit(event)">
+      <input type="hidden" name="_subject" value="Corporate Risk Audit Booking">
+      <input type="hidden" name="page_source" id="auditPageSource" value="corporate-risk-audit">
+      <input type="hidden" name="service_interest" id="auditServiceInterest" value="Corporate Risk Audit">
+
+      <div class="svc-drawer-fields">
+        <p class="svc-field-kicker" style="font-family:var(--font-display); font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#111827; border-left:3px solid var(--red); padding-left:8px; margin:0 0 14px;">SITE DETAILS</p>
+
+        <div class="form-field-group">
+          <label for="audit-company" class="form-field-label">Company / Organization <span class="required-star">*</span></label>
+          <input id="audit-company" name="company_name" class="form-field-input" placeholder="e.g. Acme Logistics Kenya" required oninput="validateAuditForm()">
+        </div>
+
+        <div class="form-field-group">
+          <label for="audit-site-type" class="form-field-label">Site type <span class="required-star">*</span></label>
+          <select id="audit-site-type" name="property_type" class="form-field-input" required onchange="validateAuditForm()">
+            <option value="">Select site type…</option>
+            <option value="Office / Corporate">Office / Corporate</option>
+            <option value="Warehouse / Logistics">Warehouse / Logistics</option>
+            <option value="Retail / Shopping Unit">Retail / Shopping Unit</option>
+            <option value="Construction Site">Construction Site</option>
+            <option value="Estate / Apartment Block">Estate / Apartment Block</option>
+            <option value="Institution / Mixed-Use">Institution / Mixed-Use</option>
+          </select>
+        </div>
+
+        <div class="form-field-group">
+          <label for="audit-location" class="form-field-label">Location <span class="required-star">*</span></label>
+          <input id="audit-location" name="location" class="form-field-input" placeholder="e.g. Industrial Area, Mombasa Road" required oninput="validateAuditForm()">
+        </div>
+
+        <div class="svc-drawer-contact-row">
+          <div class="form-field-group">
+            <label for="audit-site-scale" class="form-field-label">Approximate site scale <span class="required-star">*</span></label>
+            <select id="audit-site-scale" name="site_scale" class="form-field-input" required onchange="validateAuditForm()">
+              <option value="">Select scale…</option>
+              <option value="Under 500 sqm">Under 500 sqm</option>
+              <option value="500 – 2,000 sqm">500 – 2,000 sqm</option>
+              <option value="Over 2,000 sqm">Over 2,000 sqm</option>
+              <option value="Multi-building / Yard">Multi-building / yard</option>
+            </select>
+          </div>
+
+          <div class="form-field-group">
+            <label for="audit-timeframe" class="form-field-label">Decision timeframe <span class="required-star">*</span></label>
+            <select id="audit-timeframe" name="decision_timeframe" class="form-field-input" required onchange="validateAuditForm()">
+              <option value="">Select timeframe…</option>
+              <option value="This month">This month</option>
+              <option value="This quarter">This quarter</option>
+              <option value="Exploring / Budgeting">Exploring / Budgeting</option>
+            </select>
+          </div>
+        </div>
+
+        <hr class="svc-drawer-divider">
+        <p class="svc-field-kicker" style="font-family:var(--font-display); font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#111827; border-left:3px solid var(--red); padding-left:8px; margin:0 0 14px;">CONTACT DETAILS</p> Contact</p>
+
+        <div class="svc-drawer-contact-row">
+          <div class="form-field-group">
+            <label for="audit-name" class="form-field-label">Full name <span class="required-star">*</span></label>
+            <input id="audit-name" name="name" class="form-field-input" placeholder="e.g. David Ochieng" required oninput="validateAuditForm()">
+          </div>
+
+          <div class="form-field-group">
+            <label for="audit-phone" class="form-field-label">WhatsApp number <span class="required-star">*</span></label>
+            <input id="audit-phone" name="phone" inputmode="tel" class="form-field-input" placeholder="e.g. 0768 055 555" required oninput="validateAuditForm()">
+          </div>
+        </div>
+      </div>
+
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="svc-drawer-submit">
+        <button class="btn btn-primary" type="submit" id="auditSubmitBtn" disabled>Book Corporate Risk Audit via WhatsApp</button>
+      </div>
+
+      <p class="quiet-help-line">Prefer to talk first? <a href="https://wa.me/254768055555">Chat on WhatsApp</a></p>
+      <p style="font-size:12px; color:#5B6472; margin:14px 0 0; line-height:1.5;">Your details are used only to respond to this request. See our <a href="/privacy-policy/" style="color:#0D1430; text-decoration:underline;">Privacy Policy</a>.</p>
     </form>
   </div>
 </aside>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex, follow"/>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17823714787"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    var uecConsent=null;try{uecConsent=localStorage.getItem('uec_cookie_consent');}catch(e){}
+    var uecGranted=uecConsent==='granted'?'granted':'denied';
+    gtag('consent','default',{'ad_storage':uecGranted,'ad_user_data':uecGranted,'ad_personalization':uecGranted,'analytics_storage':uecGranted});
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17823714787');
+    gtag('config', 'G-ZER6GV8ZCS');
+  </script>
+
+  <title>Thank You | Urban Eye Security</title>
+  <link rel="canonical" href="https://urbaneyesecurity.co.ke/thank-you/"/>
+
+  <link rel="icon" href="/urban-eye-assets/favicon-48.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/urban-eye-assets/apple-touch-icon-180.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&amp;family=Barlow:wght@400;500;600;700&amp;display=swap"/>
+  <link rel="stylesheet" href="/style.css?v=20260811a"/>
+</head>
+
+<body class="thank-you-page">
+  <div id="site-navbar"></div>
+
+  <main style="min-height: 65vh; display: flex; align-items: center; justify-content: center; padding: 60px 20px; background: var(--light, #F5F7FA);">
+    <div style="width: 100%; max-width: 600px; background: #ffffff; border: 1px solid #D9DEE8; border-radius: 6px; padding: 48px 36px; text-align: center; box-shadow: 0 10px 30px rgba(17,24,39,0.06);">
+      
+      <!-- Success Icon -->
+      <div style="width: 56px; height: 56px; background: rgba(196, 39, 46, 0.08); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--red, #C4272E);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <!-- Confirmation Heading -->
+      <h1 id="thankYouHeading" style="font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: clamp(26px, 4vw, 36px); font-weight: 800; color: #111827; margin: 0 0 12px; line-height: 1.2;">
+        Your request has been received.
+      </h1>
+
+      <!-- Expectation Line -->
+      <p style="font-family: var(--font-primary, 'Barlow', sans-serif); font-size: 16px; color: #5B6472; line-height: 1.6; margin: 0 0 28px;">
+        Urban Eye reviews every request and responds within one business day.
+      </p>
+
+      <!-- Quiet WhatsApp Fallback Link -->
+      <div style="border-top: 1px solid #D9DEE8; padding-top: 24px; margin-top: 24px;">
+        <p style="font-family: var(--font-primary, 'Barlow', sans-serif); font-size: 14px; color: #5B6472; margin: 0;">
+          Prefer immediate assistance? <a href="https://wa.me/254768055555" target="_blank" rel="noopener noreferrer" style="color: #0D1430; font-weight: 600; text-decoration: underline;">Chat with us on WhatsApp &rarr;</a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/js/includes.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var service = params.get('service');
+      var heading = document.getElementById('thankYouHeading');
+      if (service && heading) {
+        var safeService = service.replace(/[<>]/g, '').trim();
+        if (safeService.length > 0) {
+          heading.textContent = 'Your ' + safeService + ' request has been received.';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

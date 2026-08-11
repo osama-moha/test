@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&amp;family=Barlow:wght@400;500;600;700&amp;display=swap"/>
-<link rel="stylesheet" href="/style.css?v=20260808i"/>
+<link rel="stylesheet" href="/style.css?v=20260811a"/>
 
 <script type="application/ld+json">
 {
@@ -109,10 +109,10 @@
 <div id="site-navbar"></div>
   <nav class="breadcrumb-bar" aria-label="Breadcrumb" style="background:#F5F7FA;border-bottom:1px solid #D9DEE8;padding:12px 0;">
     <div class="container">
-            <ol class="breadcrumb-list">
-        <li><a href="/">Home</a></li>
-        <li aria-current="page">Site Security Review</li>
-      </ol>
+      <ul class="breadcrumb-list" style="display:flex !important; flex-direction:row !important; flex-wrap:wrap !important; align-items:center !important; list-style:none !important; margin:0 !important; padding:0 !important; gap:0 !important; font-size:13px; color:#5B6472;">
+        <li style="display:inline-flex !important; align-items:center !important; list-style:none !important;"><a href="/" style="color:#5B6472; text-decoration:none; font-weight:600;">Home</a><span style="margin:0 8px; color:#D9DEE8;">/</span></li>
+        <li aria-current="page" style="display:inline-flex !important; align-items:center !important; list-style:none !important; color:#0D1430; font-weight:700;">Site Security Review</li>
+      </ul>
     </div>
   </nav>
 <script type="application/ld+json">
@@ -129,7 +129,7 @@
           Urban Eye reviews your site in person to identify perimeter vulnerabilities, access gaps, blind spots and operational risks. You receive documented findings before security personnel or equipment are recommended.
         </p>
         <div class="hero-actions">
-          <a onclick="return openServiceDrawer('risk-review','Site Security Review','Request a Site Security Review','Share a few details and Urban Eye will schedule a site security review for your property.')" class="btn btn-primary" href="/contact/?service=risk-review">Request a Site Security Review</a>
+          <a onclick="return openReviewDrawer()" class="btn btn-primary" href="/contact/?service=risk-review">Request a Site Security Review</a>
           <a class="cta-whatsapp-link" href="https://wa.me/254768055555" style="align-self:center;margin-left:8px;">Or chat on WhatsApp &rarr;</a>
         </div>
       </div>
@@ -322,7 +322,7 @@
           <p>Request a Site Security Review and Urban Eye will assess the issues that should be addressed before a security solution is proposed.</p>
         </div>
         <div class="system-bridge-actions">
-          <a onclick="return openServiceDrawer('risk-review','Site Security Review','Request a Site Security Review','Share a few details and Urban Eye will schedule a site security review for your property.')" class="btn btn-primary" href="/contact/?service=risk-review">Request a Site Security Review</a>
+          <a onclick="return openReviewDrawer()" class="btn btn-primary" href="/contact/?service=risk-review">Request a Site Security Review</a>
           <a class="cta-whatsapp-link" href="https://wa.me/254768055555">Or chat with us instantly on WhatsApp &rarr;</a>
         </div>
       </div>

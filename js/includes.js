@@ -414,53 +414,41 @@ async function handleUnifiedSubmit(event, config) {
     submitBtn.textContent = "Sending your request...";
   }
 
-  const name = document.getElementById(config.nameFieldId) ? document.getElementById(config.nameFieldId).value : "";
-  const phone = document.getElementById(config.phoneFieldId) ? document.getElementById(config.phoneFieldId).value : "";
-  const propType = document.getElementById(config.inputPrefix + 'property_type') ? document.getElementById(config.inputPrefix + 'property_type').value : "";
-  const location = document.getElementById(config.surfacePrefix + '-location') ? document.getElementById(config.surfacePrefix + '-location').value : "";
-  const concern = document.getElementById(config.inputPrefix + 'security_concern') ? document.getElementById(config.inputPrefix + 'security_concern').value : "";
-  const serviceInterest = document.getElementById(config.surfacePrefix + 'ServiceInterest') ? document.getElementById(config.surfacePrefix + 'ServiceInterest').value : "";
-
-  let companyName = "";
-  const companyEl = document.getElementById(config.surfacePrefix + '-company');
-  if (companyEl && companyEl.value) companyName = companyEl.value;
-
-  let whatsappMessage = `Hello Urban Eye, I would like to request a security review.\n\n` +
-                        `*Service:* ${serviceInterest || "Security Assessment"}\n` +
-                        `*Name:* ${name}\n`;
-  if (companyName) whatsappMessage += `*Company:* ${companyName}\n`;
-  whatsappMessage += `*WhatsApp:* ${phone}\n` +
-                     `*Property Type:* ${propType}\n` +
-                     `*Location:* ${location}\n` +
-                     `*Primary Concern:* ${concern}`;
-
-  const eqStatusEl = document.getElementById(config.surfacePrefix + '-installation-status');
-  if (eqStatusEl && eqStatusEl.value) whatsappMessage += `\n*System Status:* ${eqStatusEl.value}`;
-
-  const scaleEl = document.getElementById(config.surfacePrefix + '-site-scale');
-  if (scaleEl && scaleEl.value) whatsappMessage += `\n*Site Scale:* ${scaleEl.value}`;
-
-  const opTimeframeEl = document.getElementById(config.surfacePrefix + '-operations-timeframe');
-  if (opTimeframeEl && opTimeframeEl.value) whatsappMessage += `\n*Timeframe:* ${opTimeframeEl.value}`;
-
-  const corpTimeframeEl = document.getElementById(config.surfacePrefix + '-corporate-timeframe');
-  if (corpTimeframeEl && corpTimeframeEl.value) whatsappMessage += `\n*Timeframe:* ${corpTimeframeEl.value}`;
-
-  const encodedMessage = encodeURIComponent(whatsappMessage);
-  const whatsappUrl = `https://wa.me/254768055555?text=${encodedMessage}`;
+  const serviceInterest = document.getElementById(config.surfacePrefix + 'ServiceInterest') ? document.getElementById(config.surfacePrefix + 'ServiceInterest').value : "Security Assessment";
 
   try {
-    await fetch(form.action, {
+    const response = await fetch(form.action, {
       method: form.method,
       body: new FormData(form),
       headers: { 'Accept': 'application/json' }
     });
-  } catch(err) {
-    console.error("Formspree connection backup logged:", err);
-  }
 
-  window.location.href = whatsappUrl;
-  return false;
+    if (response.ok) {
+      window.location.href = `/thank-you/?service=${encodeURIComponent(serviceInterest || "Security Assessment")}`;
+      return false;
+    } else {
+      throw new Error("Formspree response not ok");
+    }
+  } catch(err) {
+    console.error("Form submission error:", err);
+    let errEl = form.querySelector('.form-submission-error');
+    if (!errEl) {
+      errEl = document.createElement('div');
+      errEl.className = 'form-submission-error';
+      errEl.style.cssText = 'color:#C4272E; font-size:13.5px; font-weight:600; margin-top:12px; text-align:center;';
+      if (submitBtn && submitBtn.parentNode) {
+        submitBtn.parentNode.insertBefore(errEl, submitBtn.nextSibling);
+      } else {
+        form.appendChild(errEl);
+      }
+    }
+    errEl.textContent = "There was an error submitting your form. Please try again or contact us on WhatsApp.";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Request";
+    }
+    return false;
+  }
 }
 
 function handleStepSelection(element, fieldId, value, currentStep) {
@@ -479,6 +467,216 @@ function handleContactPageSubmit(event) {
   return handleUnifiedSubmit(event, CONTACT_FORM_CONFIG);
 }
 
+/* ===============================
+   Dedicated Service Drawers
+   (Site Security Review + Corporate Risk Audit)
+================================ */
+
+// ---- Review Drawer ----
+let reviewDrawerLastFocus = null;
+
+function openReviewDrawer(pageSource) {
+  const backdrop = document.getElementById('reviewDrawerBackdrop');
+  const drawer = document.getElementById('reviewDrawer');
+  if (!backdrop || !drawer) return true;
+
+  if (window.event && typeof window.event.preventDefault === 'function') {
+    window.event.preventDefault();
+  }
+
+  reviewDrawerLastFocus = document.activeElement;
+
+  // Reset form
+  const form = document.getElementById('review-drawer-form');
+  if (form) form.reset();
+
+  const pageSourceField = document.getElementById('reviewPageSource');
+  if (pageSourceField) pageSourceField.value = pageSource || 'risk-review';
+
+  const submitBtn = document.getElementById('reviewSubmitBtn');
+  if (submitBtn) submitBtn.disabled = true;
+
+  backdrop.classList.add('open');
+  drawer.classList.add('open');
+  document.body.classList.add('drawer-open');
+  return false;
+}
+
+function closeReviewDrawer() {
+  const backdrop = document.getElementById('reviewDrawerBackdrop');
+  const drawer = document.getElementById('reviewDrawer');
+  if (backdrop) backdrop.classList.remove('open');
+  if (drawer) drawer.classList.remove('open');
+  document.body.classList.remove('drawer-open');
+  if (reviewDrawerLastFocus && typeof reviewDrawerLastFocus.focus === 'function') {
+    reviewDrawerLastFocus.focus();
+  }
+  return false;
+}
+
+function validateReviewForm() {
+  const propType = document.getElementById('review-property-type').value;
+  const location = document.getElementById('review-location').value.trim();
+  const name = document.getElementById('review-name').value.trim();
+  const phone = document.getElementById('review-phone').value.trim();
+  const submitBtn = document.getElementById('reviewSubmitBtn');
+
+  // main_concern is optional, skipping it does not block submission
+  const isValid = propType !== '' && location.length >= 2 && name.length >= 2 && phone.length >= 8;
+  if (submitBtn) submitBtn.disabled = !isValid;
+}
+
+async function handleReviewSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const submitBtn = document.getElementById('reviewSubmitBtn');
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending your request...';
+  }
+
+  const serviceInterest = document.getElementById('reviewServiceInterest') ? document.getElementById('reviewServiceInterest').value : 'Site Security Review';
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      window.location.href = `/thank-you/?service=${encodeURIComponent(serviceInterest)}`;
+      return false;
+    } else {
+      throw new Error("Formspree response not ok");
+    }
+  } catch (err) {
+    console.error('Review submit error:', err);
+    let errEl = form.querySelector('.form-submission-error');
+    if (!errEl) {
+      errEl = document.createElement('div');
+      errEl.className = 'form-submission-error';
+      errEl.style.cssText = 'color:#C4272E; font-size:13.5px; font-weight:600; margin-top:12px; text-align:center;';
+      if (submitBtn && submitBtn.parentNode) {
+        submitBtn.parentNode.insertBefore(errEl, submitBtn.nextSibling);
+      } else {
+        form.appendChild(errEl);
+      }
+    }
+    errEl.textContent = "Unable to send request right now. Please try again or chat on WhatsApp.";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Book My Site Review";
+    }
+    return false;
+  }
+}
+
+// ---- Audit Drawer ----
+let auditDrawerLastFocus = null;
+
+function openAuditDrawer(pageSource) {
+  const backdrop = document.getElementById('auditDrawerBackdrop');
+  const drawer = document.getElementById('auditDrawer');
+  if (!backdrop || !drawer) return true;
+
+  if (window.event && typeof window.event.preventDefault === 'function') {
+    window.event.preventDefault();
+  }
+
+  auditDrawerLastFocus = document.activeElement;
+
+  // Reset form
+  const form = document.getElementById('audit-drawer-form');
+  if (form) form.reset();
+
+  const pageSourceField = document.getElementById('auditPageSource');
+  if (pageSourceField) pageSourceField.value = pageSource || 'corporate-risk-audit';
+
+  const submitBtn = document.getElementById('auditSubmitBtn');
+  if (submitBtn) submitBtn.disabled = true;
+
+  backdrop.classList.add('open');
+  drawer.classList.add('open');
+  document.body.classList.add('drawer-open');
+  return false;
+}
+
+function closeAuditDrawer() {
+  const backdrop = document.getElementById('auditDrawerBackdrop');
+  const drawer = document.getElementById('auditDrawer');
+  if (backdrop) backdrop.classList.remove('open');
+  if (drawer) drawer.classList.remove('open');
+  document.body.classList.remove('drawer-open');
+  if (auditDrawerLastFocus && typeof auditDrawerLastFocus.focus === 'function') {
+    auditDrawerLastFocus.focus();
+  }
+  return false;
+}
+
+function validateAuditForm() {
+  const company = document.getElementById('audit-company').value.trim();
+  const siteType = document.getElementById('audit-site-type').value;
+  const location = document.getElementById('audit-location').value.trim();
+  const scale = document.getElementById('audit-site-scale').value;
+  const timeframe = document.getElementById('audit-timeframe').value;
+  const name = document.getElementById('audit-name').value.trim();
+  const phone = document.getElementById('audit-phone').value.trim();
+  const submitBtn = document.getElementById('auditSubmitBtn');
+
+  const isValid = company.length >= 2 && siteType !== '' && location.length >= 2 &&
+                  scale !== '' && timeframe !== '' && name.length >= 2 && phone.length >= 8;
+  if (submitBtn) submitBtn.disabled = !isValid;
+}
+
+async function handleAuditSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const submitBtn = document.getElementById('auditSubmitBtn');
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending your request...';
+  }
+
+  const serviceInterest = document.getElementById('auditServiceInterest') ? document.getElementById('auditServiceInterest').value : 'Corporate Risk Audit';
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      window.location.href = `/thank-you/?service=${encodeURIComponent(serviceInterest)}`;
+      return false;
+    } else {
+      throw new Error("Formspree response not ok");
+    }
+  } catch (err) {
+    console.error('Audit submit error:', err);
+    let errEl = form.querySelector('.form-submission-error');
+    if (!errEl) {
+      errEl = document.createElement('div');
+      errEl.className = 'form-submission-error';
+      errEl.style.cssText = 'color:#C4272E; font-size:13.5px; font-weight:600; margin-top:12px; text-align:center;';
+      if (submitBtn && submitBtn.parentNode) {
+        submitBtn.parentNode.insertBefore(errEl, submitBtn.nextSibling);
+      } else {
+        form.appendChild(errEl);
+      }
+    }
+    errEl.textContent = "Unable to send request right now. Please try again or chat on WhatsApp.";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Book Corporate Risk Audit";
+    }
+    return false;
+  }
+}
+
 function initLeadDrawer(){
   const drawer = document.getElementById("drawer");
   if(!drawer) return;
@@ -488,8 +686,27 @@ function initLeadDrawer(){
   });
 }
 
+// Escape key support for dedicated drawers
+function initServiceDrawers() {
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const reviewDrawer = document.getElementById('reviewDrawer');
+    const auditDrawer = document.getElementById('auditDrawer');
+    if (reviewDrawer && reviewDrawer.classList.contains('open')) closeReviewDrawer();
+    if (auditDrawer && auditDrawer.classList.contains('open')) closeAuditDrawer();
+  });
+}
+
 window.openServiceDrawer = openServiceDrawer;
 window.closeFormDrawer = closeFormDrawer;
+window.openReviewDrawer = openReviewDrawer;
+window.closeReviewDrawer = closeReviewDrawer;
+window.validateReviewForm = validateReviewForm;
+window.handleReviewSubmit = handleReviewSubmit;
+window.openAuditDrawer = openAuditDrawer;
+window.closeAuditDrawer = closeAuditDrawer;
+window.validateAuditForm = validateAuditForm;
+window.handleAuditSubmit = handleAuditSubmit;
 window.handleStepSelection = handleStepSelection;
 window.prevDrawerStep = prevDrawerStep;
 window.nextDrawerStep = nextDrawerStep;
@@ -715,6 +932,7 @@ function initControlLines(){
 document.addEventListener("DOMContentLoaded", async ()=>{
   await loadNavbar();
   await loadFooter();
+  initServiceDrawers();
   initHeaderScroll();
   initSmoothAnchors();
   initPageReveal();
