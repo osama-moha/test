@@ -5765,17 +5765,32 @@ a.nav-serve-monitoring:hover strong{
   width: min(560px, 46vw);
   height: 560px;
   transform: translateY(-50%);
-  background-image: url("/urban-eye-assets/logo-watermark-navy.svg");
+  background-image: url("/urban-eye-assets/logo-watermark-gray.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  opacity: 0.035;
+  opacity: 0.10;
   pointer-events: none;
 }
 
 #services.watermark-section > * {
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  #services.watermark-section::before {
+    animation: watermark-float 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes watermark-float {
+    from {
+      transform: translateY(-50%) translateY(-18px);
+    }
+    to {
+      transform: translateY(-50%) translateY(18px);
+    }
+  }
 }
 
 @media (max-width: 991px) {
