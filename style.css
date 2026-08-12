@@ -5778,21 +5778,6 @@ a.nav-serve-monitoring:hover strong{
   z-index: 1;
 }
 
-@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
-  #services.watermark-section::before {
-    animation: watermark-float 12s ease-in-out infinite alternate;
-  }
-
-  @keyframes watermark-float {
-    from {
-      transform: translateY(-50%) translateY(-18px);
-    }
-    to {
-      transform: translateY(-50%) translateY(18px);
-    }
-  }
-}
-
 @media (max-width: 991px) {
   #services.watermark-section::before {
     display: none;
