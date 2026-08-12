@@ -5749,7 +5749,37 @@ a.nav-serve-monitoring:hover strong{
   color:var(--red-dark);
 }
 
-/* Home page Who We Serve accordion */
+/* Brand Watermark Texture System */
+.watermark-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.watermark-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -6%;
+  z-index: -1;
+  width: min(700px, 62vw);
+  aspect-ratio: 1254 / 247;
+  transform: translateY(-50%);
+  background: url("/urban-eye-assets/logo-watermark-navy.svg") center / contain no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.watermark-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 991px) {
+  .watermark-section::before {
+    display: none;
+  }
+}
 
 .who-serve-section{
   padding-bottom:76px;
