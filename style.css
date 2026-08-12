@@ -5759,14 +5759,13 @@ a.nav-serve-monitoring:hover strong{
 .watermark-section::before {
   content: "";
   position: absolute;
-  top: 50%;
-  right: -2%;
+  top: 24px;
+  right: -2vw;
   z-index: 0;
-  width: min(750px, 65vw);
+  width: min(850px, 72vw);
   aspect-ratio: 1254 / 247;
-  transform: translateY(-50%);
   background: url("/urban-eye-assets/logo-watermark-navy.svg") center / contain no-repeat;
-  opacity: 0.08;
+  opacity: 0.12;
   pointer-events: none;
 }
 
