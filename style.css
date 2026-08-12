@@ -5760,13 +5760,13 @@ a.nav-serve-monitoring:hover strong{
   content: "";
   position: absolute;
   top: 50%;
-  right: -6%;
+  right: -2%;
   z-index: 0;
-  width: min(700px, 62vw);
+  width: min(750px, 65vw);
   aspect-ratio: 1254 / 247;
   transform: translateY(-50%);
   background: url("/urban-eye-assets/logo-watermark-navy.svg") center / contain no-repeat;
-  opacity: 0.05;
+  opacity: 0.08;
   pointer-events: none;
 }
 
@@ -5794,7 +5794,7 @@ a.nav-serve-monitoring:hover strong{
   min-height:470px;
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
-  background:#fff;
+  background:transparent;
   overflow:hidden;
 }
 
@@ -5804,7 +5804,7 @@ a.nav-serve-monitoring:hover strong{
   flex:0 0 76px;
   min-width:0;
   border-right:1px solid var(--border);
-  background:#fff;
+  background:transparent;
   transition:flex-basis var(--motion-normal) var(--ease-standard), flex-grow var(--motion-normal) var(--ease-standard), background var(--motion-normal) var(--ease-standard);
 }
 
@@ -5815,6 +5815,7 @@ a.nav-serve-monitoring:hover strong{
 .who-serve-panel.is-active{
   grid-template-columns:76px minmax(0,1fr);
   flex:1 1 760px;
+  background:#fff;
 }
 
 .who-serve-trigger{
@@ -5827,7 +5828,7 @@ a.nav-serve-monitoring:hover strong{
   padding:20px 11px;
   border:0;
   border-radius:0;
-  background:var(--light);
+  background:rgba(246,248,252,.75);
   color:var(--deep-navy);
   font:inherit;
   text-align:left;
