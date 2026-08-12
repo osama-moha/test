@@ -5749,34 +5749,26 @@ a.nav-serve-monitoring:hover strong{
   color:var(--red-dark);
 }
 
-/* Brand Watermark Texture System */
-.watermark-section {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
-
-.watermark-section::before {
-  content: "";
+/* Brand Watermark Inline Graphic System */
+.watermark-container {
   position: absolute;
-  top: 50%;
-  right: -2%;
-  z-index: 0;
-  width: min(750px, 65vw);
-  aspect-ratio: 1249 / 227;
-  transform: translateY(-50%);
-  background: url("/urban-eye-assets/logo-watermark-navy.svg") center / contain no-repeat;
-  opacity: 0.08;
+  top: 30px;
+  right: -2vw;
+  width: min(800px, 70vw);
   pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0.12;
 }
 
-.watermark-section > * {
-  position: relative;
-  z-index: 1;
+.watermark-svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @media (max-width: 991px) {
-  .watermark-section::before {
+  .watermark-container {
     display: none;
   }
 }
