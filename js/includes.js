@@ -780,16 +780,24 @@ function initHeaderScroll(){
   const header = document.querySelector(".topbar");
   if(!header) return;
 
+  let ticking = false;
+
   function onScroll(){
     if(window.scrollY > 40){
       header.classList.add("is-scrolled");
     }else{
       header.classList.remove("is-scrolled");
     }
+    ticking = false;
   }
 
   onScroll();
-  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("scroll", ()=>{
+    if(!ticking){
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, {passive:true});
 }
 
 function initSmoothAnchors(){
@@ -929,6 +937,32 @@ function initControlLines(){
   }
 }
 
+function initTaglineReveal(){
+  const container = document.querySelector("[data-tagline-reveal]");
+  if(!container) return;
+
+  const words = container.querySelectorAll("span");
+  if(!words.length) return;
+
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+          words.forEach((word, idx)=>{
+            setTimeout(()=>{
+              word.classList.add("is-active");
+            }, idx * 75);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.25});
+    observer.observe(container);
+  }else{
+    words.forEach((w)=>w.classList.add("is-active"));
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async ()=>{
   await loadNavbar();
   await loadFooter();
@@ -938,6 +972,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   initPageReveal();
   initScrollReveal();
   initHeroParallax();
+  initTaglineReveal();
   initPageProgress();
   initControlLines();
   preselectInterestFromUrl();

@@ -68,7 +68,7 @@
     color:rgba(7,18,47,.4);
     font-size:12px;
     line-height:1;
-    font-weight:900;
+    font-weight:700;
   }
 
   .who-serve-panel.is-active .who-serve-index{
@@ -77,9 +77,9 @@
 
   .who-serve-label{
     color:inherit;
-    font-size:13.5px;
-    line-height:1.15;
-    font-weight:900;
+    font-size:14px;
+    line-height:1.2;
+    font-weight:700;
     letter-spacing:.04em;
     text-transform:uppercase;
   }
@@ -122,8 +122,8 @@
   .who-serve-copy h3{
     margin:0 0 16px;
     color:#07122f;
-    font-size:clamp(27px,2.35vw,35px);
-    line-height:1.08;
+    font-size:clamp(24px,2.2vw,30px);
+    line-height:1.15;
     letter-spacing:0;
   }
 
@@ -151,7 +151,7 @@
     color:#07122f;
     font-size:14px;
     line-height:1.35;
-    font-weight:800;
+    font-weight:600;
   }
 
   .who-serve-cta{
