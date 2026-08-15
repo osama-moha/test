@@ -951,7 +951,7 @@ function initControlLines(){
 }
 
 function initTaglineReveal(){
-  const container = document.querySelector("[data-tagline-reveal]");
+  const container = document.querySelector("#tagline-reveal, [data-tagline-reveal]");
   if(!container) return;
 
   const words = container.querySelectorAll("span");

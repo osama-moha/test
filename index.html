@@ -34,9 +34,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap"/>
 <link rel="preload" as="image" href="/urban-eye-assets/guard3-800.webp" imagesrcset="/urban-eye-assets/guard3-480.webp 480w, /urban-eye-assets/guard3-800.webp 800w, /urban-eye-assets/guard3-1100.webp 1100w" imagesizes="(max-width: 768px) 100vw, 55vw"/>
-<link rel="stylesheet" href="/style.css?v=20260808i"/>
+<link rel="stylesheet" href="/style.css?v=20260815b"/>
 
-<link rel="stylesheet" href="/assets/home.css?v=20260717b"/>
+<link rel="stylesheet" href="/assets/home.css?v=20260815b"/>
 
 <script type="application/ld+json">
 {
@@ -365,9 +365,9 @@
     </div>
   </section>
 
-  <section class="tagline-reveal-section" aria-label="Core Security Standard">
+  <section class="tagline-reveal-section" aria-label="Core Commitment">
     <div class="container">
-      <blockquote class="tagline-reveal-text" data-tagline-reveal>
+      <blockquote class="tagline-reveal-text" id="tagline-reveal" data-tagline-reveal>
         <span>Perimeter</span> <span>detection,</span> <span>24/7</span> <span>central</span> <span>station</span> <span>monitoring,</span> <span>and</span> <span>mobile</span> <span>response</span> <span>unified</span> <span>under</span> <span>a</span> <span>single</span> <span>service</span> <span>agreement.</span>
       </blockquote>
     </div>
@@ -546,18 +546,22 @@
     </div>
   </section>
 
-  <section id="contact" class="dark-section">
+  <section class="bottom-cta-section" id="contact-cta">
     <div class="container">
-      <div class="cta-band reveal-up">
-        <div>
-          <h2>Request a site assessment before buying equipment.</h2>
-          <p>A site assessment helps identify the right solution before money is spent on guards, alarms, cameras, or access control.</p>
-        </div>
-
-        <div class="system-bridge-actions">
-          <a onclick="return openServiceDrawer('homepage-private','General Security Assessment','Design Your Protection Plan','Share a few details and Urban Eye will advise on the right next step for your home or estate.')" class="btn btn-primary" href="/contact/?service=risk-review">Design Your Protection Plan</a>
-          <a class="btn btn-outline" href="/corporate-risk-audit/">Book a Corporate Risk Audit</a>
-          <a class="cta-whatsapp-link" href="https://wa.me/254768055555">Or chat with us instantly on WhatsApp →</a>
+      <div class="bottom-cta-card">
+        <div class="bottom-cta-content">
+          <h2 class="bottom-cta-title">Ready to secure your property?</h2>
+          <p class="bottom-cta-description">
+            Schedule a technical site survey with our licensed security team. We inspect your premises, map coverage vulnerabilities, and deliver an engineered protection plan.
+          </p>
+          <div class="bottom-cta-actions">
+            <button type="button" class="btn btn-primary" onclick="return openServiceDrawer('homepage-bottom','General Security Assessment','Request a Site Assessment','Share a few property details and Urban Eye will perform an on-site hazard walkthrough and provide a technical bill of quantities.')" data-modal-open="assessment-modal">
+              Request a Site Assessment &rarr;
+            </button>
+            <p class="bottom-cta-direct">
+              Prefer to talk directly? Call our operations desk or <a href="https://wa.me/254768055555" class="cta-inline-link">message us on WhatsApp</a>.
+            </p>
+          </div>
         </div>
       </div>
     </div>
