@@ -886,15 +886,28 @@ function initPageProgress(){
   const bar = document.querySelector(".page-progress-bar");
   if(!bar) return;
 
+  let ticking = false;
+
   function update(){
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const progress = max > 0 ? (window.scrollY / max) * 100 : 0;
     bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+    ticking = false;
   }
 
   update();
-  window.addEventListener("scroll", update, {passive:true});
-  window.addEventListener("resize", update);
+  window.addEventListener("scroll", ()=>{
+    if(!ticking){
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, {passive:true});
+  window.addEventListener("resize", ()=>{
+    if(!ticking){
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  });
 }
 
 function preselectInterestFromUrl(){
@@ -951,7 +964,7 @@ function initTaglineReveal(){
           words.forEach((word, idx)=>{
             setTimeout(()=>{
               word.classList.add("is-active");
-            }, idx * 75);
+            }, idx * 60);
           });
           observer.unobserve(entry.target);
         }

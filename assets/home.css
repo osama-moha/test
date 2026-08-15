@@ -462,53 +462,61 @@
     max-width:680px;
   }
 
-  #home .hero-eyebrow{
-    color:rgba(255,255,255,.72);
-    font-size:.75rem;
-    line-height:1.2;
-    font-weight:700;
-    letter-spacing:.1em;
+  #home.hero h1{
+    max-width:760px;
+    font-size:clamp(2.25rem, 4.5vw, 3rem);
+    line-height:1.1;
+    letter-spacing:-0.025em;
+    font-weight:600;
+    text-wrap:balance;
+    background:linear-gradient(180deg, #FFFFFF 0%, #9B9B9B 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    color:#FFFFFF;
     margin-bottom:1.25rem;
   }
 
-  #home.hero h1{
-    max-width:780px;
-    font-size:clamp(2.75rem,4.7vw,3.75rem);
-    line-height:1.03;
-    letter-spacing:-.035em;
-    font-weight:600;
-  }
-
   #home .hero-copy{
-    max-width:680px;
-    color:rgba(255,255,255,.80);
+    max-width:640px;
+    color:rgba(255,255,255,.85);
     font-family:var(--font-primary);
-    font-size:clamp(1rem,1.35vw,1.18rem);
-    line-height:1.6;
-    font-weight:500;
+    font-size:1.125rem;
+    line-height:1.75rem;
+    font-weight:400;
+    text-wrap:pretty;
+    margin-bottom:1.75rem;
   }
 
   #home .hero-actions{
     gap:.875rem;
-    margin-top:2rem;
+    margin-top:0;
     margin-bottom:0;
   }
 
   #home .hero-actions .btn{
-    min-height:50px;
-    padding:0 24px;
+    min-height:52px;
+    padding:0 28px;
     border-radius:3px;
-    font-size:.9375rem;
+    font-size:1rem;
+    line-height:1.5rem;
     font-weight:600;
   }
 
   #home .hero-actions .btn-primary{
     box-shadow:none;
+    background:var(--red, #C51E24);
+    color:#FFFFFF;
   }
 
-  #home .hero-actions .btn-outline-white{
-    background:transparent;
-    border-color:rgba(255,255,255,.42);
+  #home .hero-cta-subtext{
+    margin-top:1rem;
+    margin-bottom:0;
+    color:rgba(255,255,255,.70);
+    font-size:0.875rem;
+    line-height:1.25rem;
+    font-weight:400;
+    text-wrap:pretty;
   }
 
   #home .hero-photo img{
@@ -536,19 +544,19 @@
       padding:42px 0 22px;
     }
 
-  #home.hero h1{
-      font-size:clamp(2.25rem,10vw,2.875rem);
-      line-height:1.04;
-      letter-spacing:-.03em;
+    #home.hero h1{
+      font-size:clamp(2rem, 8vw, 2.5rem);
+      line-height:1.15;
+      letter-spacing:-0.02em;
     }
 
     #home .hero-copy{
       font-size:1rem;
-      line-height:1.55;
+      line-height:1.5rem;
     }
 
     #home .hero-actions{
-      margin-top:1.35rem;
+      margin-top:0;
     }
 
     #home .hero-photo{
@@ -560,7 +568,7 @@
     }
   }
 
-    /* =========================================================
+  /* =========================================================
      Homepage corporate CTA consistency
      Keeps all homepage red actions flat and controlled.
      ========================================================= */
@@ -569,12 +577,21 @@
     border-radius:3px;
     box-shadow:none !important;
     transform:none;
+    transition:background var(--motion-fast) ease, transform var(--motion-fast) ease, opacity var(--motion-fast) ease;
   }
 
-  body .btn-primary:hover,
-  body .btn-primary:focus-visible{
-    box-shadow:none !important;
-    transform:none;
+  body .btn-primary:active,
+  body .btn-outline:active,
+  body .btn-outline-white:active,
+  body .client-logo-card:active{
+    transform:scale(0.98) !important;
+  }
+
+  body .btn-primary:focus-visible,
+  body .btn-outline:focus-visible,
+  body .btn-outline-white:focus-visible{
+    outline:2px solid var(--red, #C51E24) !important;
+    outline-offset:2px;
   }
 
   body .btn-outline,
@@ -582,18 +599,10 @@
     border-radius:3px;
     box-shadow:none !important;
     transform:none;
+    transition:background var(--motion-fast) ease, transform var(--motion-fast) ease, border-color var(--motion-fast) ease;
   }
 
-  body .btn-outline:hover,
-  body .btn-outline:focus-visible,
-  body .btn-outline-white:hover,
-  body .btn-outline-white:focus-visible{
-    box-shadow:none !important;
-    transform:none;
-  }
-
-  /* Problem section — tighter mobile spacing (also inlined, not relying on
-     style.css alone) */
+  /* Problem section: tighter mobile spacing */
   @media(max-width:900px){
     .problem-item{
       padding:18px 0 !important;
@@ -602,11 +611,12 @@
       margin-bottom:10px !important;
     }
     .problem-item h3{
-      font-size:19px !important;
+      font-size:1.1875rem !important;
+      line-height:1.5rem !important;
       margin-bottom:8px !important;
     }
     .problem-item p{
-      font-size:14.5px !important;
-      line-height:1.55 !important;
+      font-size:0.875rem !important;
+      line-height:1.25rem !important;
     }
   }
